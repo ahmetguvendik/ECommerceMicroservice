@@ -4,14 +4,95 @@
     "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/ProductService.WebApi.csproj": {}
   },
   "projects": {
-    "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/ProductService.WebApi.csproj": {
+    "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/ProductService.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/ProductService.WebApi.csproj",
-        "projectName": "ProductService.WebApi",
-        "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/ProductService.WebApi.csproj",
+        "projectUniqueName": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/ProductService.Application.csproj",
+        "projectName": "ProductService.Application",
+        "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/ProductService.Application.csproj",
         "packagesPath": "/Users/ahmetguvendik/.nuget/packages/",
-        "outputPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/obj/",
+        "outputPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ahmetguvendik/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Domain/ProductService.Domain.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Domain/ProductService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.1, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[13.1.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Domain/ProductService.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Domain/ProductService.Domain.csproj",
+        "projectName": "ProductService.Domain",
+        "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Domain/ProductService.Domain.csproj",
+        "packagesPath": "/Users/ahmetguvendik/.nuget/packages/",
+        "outputPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ahmetguvendik/.nuget/NuGet/NuGet.Config"
@@ -43,10 +124,158 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Infrastructure/ProductService.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Infrastructure/ProductService.Infrastructure.csproj",
+        "projectName": "ProductService.Infrastructure",
+        "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Infrastructure/ProductService.Infrastructure.csproj",
+        "packagesPath": "/Users/ahmetguvendik/.nuget/packages/",
+        "outputPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ahmetguvendik/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/ProductService.Application.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/ProductService.Application.csproj"
+              },
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Domain/ProductService.Domain.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Domain/ProductService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.9, )"
+              "version": "[9.0.11, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/ProductService.WebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/ProductService.WebApi.csproj",
+        "projectName": "ProductService.WebApi",
+        "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/ProductService.WebApi.csproj",
+        "packagesPath": "/Users/ahmetguvendik/.nuget/packages/",
+        "outputPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ahmetguvendik/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/ProductService.Application.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/ProductService.Application.csproj"
+              },
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Infrastructure/ProductService.Infrastructure.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Infrastructure/ProductService.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.11, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.9.0, )"
             }
           },
           "imports": [
