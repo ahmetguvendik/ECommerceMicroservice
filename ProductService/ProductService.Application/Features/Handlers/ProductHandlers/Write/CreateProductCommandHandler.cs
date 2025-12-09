@@ -1,8 +1,10 @@
+using MassTransit;
 using MediatR;
 using ProductService.Application.Features.Commands.ProductCommands;
 using ProductService.Application.Repositories;
 using ProductService.Application.UnitOfWorks;
 using ProductService.Domain.Entities;
+using Shared.Events;
 
 namespace ProductService.Application.Features.Handlers.ProductHandlers.Write;
 
@@ -11,15 +13,18 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
     private readonly IGenericRepository<Product>  _productRepository;
     private readonly IGenericRepository<ProductCategory> _productCategoryRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IPublishEndpoint _publishEndpoint;
 
     public CreateProductCommandHandler(
         IGenericRepository<Product> productRepository, 
         IGenericRepository<ProductCategory> productCategoryRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IPublishEndpoint publishEndpoint)
     {
          _productRepository = productRepository;
          _productCategoryRepository = productCategoryRepository;
          _unitOfWork = unitOfWork;
+         _publishEndpoint = publishEndpoint;
     }
     
     public async Task Handle(CreateProductCommand request, CancellationToken cancellationToken)
@@ -50,6 +55,11 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
             await _productRepository.CreateAsync(product, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             await _unitOfWork.CommitTransactionAsync(cancellationToken);
+
+            ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent();
+            productCreatedEvent.ProdcutId = product.Id;
+            productCreatedEvent.ProductCategoryId = product.ProductCategoryId;
+            await _publishEndpoint.Publish(productCreatedEvent, cancellationToken);
         }
         catch (Exception e)
         {

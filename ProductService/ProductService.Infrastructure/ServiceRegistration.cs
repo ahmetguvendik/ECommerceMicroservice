@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,5 +21,11 @@ public static class ServiceRegistration
         //Repositories
         collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));        
         collection.AddTransient<IUnitOfWork, UnitOfWork>();
+        
+        //Mass Trabsit (Rabbitmq)
+        collection.AddMassTransit(c => c.UsingRabbitMq((context, cfg) =>
+        {
+            cfg.Host(configuration.GetConnectionString("RabbitMq"));
+        }));
     }
 }

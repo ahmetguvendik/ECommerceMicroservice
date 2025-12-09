@@ -1,0 +1,12 @@
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/bin/Debug/net9.0/BasketService.Domain.deps.json
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/bin/Debug/net9.0/BasketService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/bin/Debug/net9.0/BasketService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/BasketService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/BasketService.Domain.AssemblyInfoInputs.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/BasketService.Domain.AssemblyInfo.cs
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/BasketService.Domain.csproj.CoreCompileInputs.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/BasketService.Domain.sourcelink.json
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/BasketService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/refint/BasketService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/BasketService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Domain/obj/Debug/net9.0/ref/BasketService.Domain.dll

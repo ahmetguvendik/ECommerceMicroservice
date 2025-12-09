@@ -1,0 +1,16 @@
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/bin/Debug/net9.0/BasketService.Application.deps.json
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/bin/Debug/net9.0/BasketService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/bin/Debug/net9.0/BasketService.Application.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/bin/Debug/net9.0/BasketService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/bin/Debug/net9.0/BasketService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketService.Application.csproj.AssemblyReference.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketService.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketService.Application.AssemblyInfoInputs.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketService.Application.AssemblyInfo.cs
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketService.Application.csproj.CoreCompileInputs.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketService.Application.sourcelink.json
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketSe.26BC4D39.Up2Date
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/refint/BasketService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/BasketService.Application.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/obj/Debug/net9.0/ref/BasketService.Application.dll

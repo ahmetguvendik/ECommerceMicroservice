@@ -1,0 +1,6 @@
+@BasketService.WebApi_HostAddress = http://localhost:5153
+
+GET {{BasketService.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,16 @@
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/bin/Debug/net9.0/ProductService.Application.deps.json
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/bin/Debug/net9.0/ProductService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/bin/Debug/net9.0/ProductService.Application.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/bin/Debug/net9.0/ProductService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/bin/Debug/net9.0/ProductService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.csproj.AssemblyReference.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.AssemblyInfoInputs.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.AssemblyInfo.cs
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.csproj.CoreCompileInputs.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.sourcelink.json
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductS.46A6959E.Up2Date
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/refint/ProductService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ref/ProductService.Application.dll
