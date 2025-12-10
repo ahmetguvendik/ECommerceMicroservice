@@ -48,6 +48,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockService.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockService.WebApi", "StockService\StockService.WebApi\StockService.WebApi.csproj", "{0CC6C2CB-729D-47BA-8543-BE1C3956296B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaStateMachine.Service", "SagaStateMachine.Service\SagaStateMachine.Service.csproj", "{905568FF-AEF5-4FBB-8349-BEA260DC546A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,7 @@ Global
 		{57955C3C-40E7-44D9-ACB4-FAEF8FDC0FB1} = {2693E9E5-E157-422F-BB1F-A16DD8EADB66}
 		{5042AEB5-FA41-4A94-B41E-CFA1C442F446} = {2693E9E5-E157-422F-BB1F-A16DD8EADB66}
 		{0CC6C2CB-729D-47BA-8543-BE1C3956296B} = {2693E9E5-E157-422F-BB1F-A16DD8EADB66}
+		{905568FF-AEF5-4FBB-8349-BEA260DC546A} = {95CD7B2F-69AE-40DD-923C-60912F67CDFF}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BD744252-3639-4D7D-A638-293995A16AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -147,5 +150,9 @@ Global
 		{0CC6C2CB-729D-47BA-8543-BE1C3956296B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CC6C2CB-729D-47BA-8543-BE1C3956296B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CC6C2CB-729D-47BA-8543-BE1C3956296B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905568FF-AEF5-4FBB-8349-BEA260DC546A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905568FF-AEF5-4FBB-8349-BEA260DC546A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905568FF-AEF5-4FBB-8349-BEA260DC546A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905568FF-AEF5-4FBB-8349-BEA260DC546A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

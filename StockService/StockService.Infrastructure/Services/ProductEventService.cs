@@ -1,4 +1,6 @@
+using MassTransit;
 using Microsoft.Extensions.Logging;
+using Shared;
 using StockService.Application.Repositories;
 using StockService.Application.Services;
 using StockService.Application.UnitOfWorks;
@@ -7,30 +9,23 @@ using Shared.Events;
 
 namespace StockService.Infrastructure.Services;
 
-/// <summary>
-/// Product event'leri için business logic service implementation
-/// Infrastructure katmanında implement edilir
-/// </summary>
+
 public class ProductEventService : IProductEventService
 {
     private readonly IGenericRepository<Stock> _stockRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ILogger<ProductEventService> _logger;
-
-    public ProductEventService(
-        IGenericRepository<Stock> stockRepository,
-        IUnitOfWork unitOfWork,
-        ILogger<ProductEventService> logger)
+    private readonly ISendEndpointProvider _sendEndpointProvider;
+    
+    public ProductEventService(IGenericRepository<Stock> stockRepository, IUnitOfWork unitOfWork, ISendEndpointProvider sendEndpointProvider)
     {
         _stockRepository = stockRepository;
         _unitOfWork = unitOfWork;
-        _logger = logger;
+        _sendEndpointProvider = sendEndpointProvider;
+ 
     }
 
     public async Task HandleProductCreatedAsync(ProductCreatedEvent productCreatedEvent, CancellationToken cancellationToken = default)
     {
-        _logger.LogInformation("Handling ProductCreatedEvent. ProductId: {ProductId}, CategoryId: {CategoryId}", 
-            productCreatedEvent.ProdcutId, productCreatedEvent.ProductCategoryId);
 
         try
         {
@@ -39,7 +34,6 @@ public class ProductEventService : IProductEventService
             
             if (existingStock != null)
             {
-                _logger.LogWarning("Stock already exists for ProductId: {ProductId}", productCreatedEvent.ProdcutId);
                 return;
             }
 
@@ -49,19 +43,24 @@ public class ProductEventService : IProductEventService
             {
                 Id = Guid.NewGuid(),
                 ProductId = productCreatedEvent.ProdcutId,
-                Count = 0 // Yeni ürün için başlangıç stoku 0
+                Count = productCreatedEvent.InitialStockCount // Product eklerken belirlenen başlangıç stoku
             };
 
             await _stockRepository.CreateAsync(newStock, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
-            await _unitOfWork.CommitTransactionAsync(cancellationToken);
+            await _unitOfWork.CommitTransactionAsync(cancellationToken); 
 
-            _logger.LogInformation("Stock created successfully for ProductId: {ProductId}", productCreatedEvent.ProdcutId);
         }
         catch (Exception ex)
         {
             await _unitOfWork.RollbackTransactionAsync(cancellationToken);
-            _logger.LogError(ex, "Error handling ProductCreatedEvent for ProductId: {ProductId}", productCreatedEvent.ProdcutId);
+            //basarisiz olursa tekrardan product a bildirmek gerekiyor!!
+           var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMqSettings.Product_StockCreationFailedEvent}"));
+           StockCreationFailedEvent creationFailedEvent = new StockCreationFailedEvent();
+           creationFailedEvent.ProductId = productCreatedEvent.ProdcutId;
+           creationFailedEvent.ErrorMessage = ex.Message;
+           creationFailedEvent.FailedAt = DateTime.UtcNow;
+           await sendEndpoint.Send(creationFailedEvent, cancellationToken);
             throw;
         }
     }

@@ -14,4 +14,5 @@ public class CreateProductCommand : IRequest
 
     public bool IsActive { get; set; } = true;
     public Guid ProductCategoryId { get; set; }
+    public int InitialStockCount { get; set; } = 0;
 }

@@ -3,5 +3,9 @@ namespace Shared.Events;
 public class ProductCreatedEvent 
 {
     public Guid ProdcutId { get; set; }
-    public Guid ProductCategoryId { get; set; }
+    public string Sku { get; set; }
+
+    public string Name { get; set; }
+
+    public int InitialStockCount { get; set; } = 0;
 }

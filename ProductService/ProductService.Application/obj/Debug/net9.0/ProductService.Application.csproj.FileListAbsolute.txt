@@ -14,3 +14,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/refint/ProductService.Application.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ProductService.Application.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/obj/Debug/net9.0/ref/ProductService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/bin/Debug/net9.0/Shared.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.Application/bin/Debug/net9.0/Shared.pdb

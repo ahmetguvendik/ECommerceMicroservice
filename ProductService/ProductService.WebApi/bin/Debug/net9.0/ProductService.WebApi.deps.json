@@ -834,9 +834,11 @@
         "dependencies": {
           "FluentValidation": "12.1.1",
           "FluentValidation.AspNetCore": "11.3.1",
+          "MassTransit.Abstractions": "9.0.0-develop.27",
           "MediatR": "13.1.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
-          "ProductService.Domain": "1.0.0"
+          "ProductService.Domain": "1.0.0",
+          "Shared": "1.0.0"
         },
         "runtime": {
           "ProductService.Application.dll": {
@@ -863,6 +865,14 @@
         },
         "runtime": {
           "ProductService.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Shared/1.0.0": {
+        "runtime": {
+          "Shared.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1349,6 +1359,11 @@
       "sha512": ""
     },
     "ProductService.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

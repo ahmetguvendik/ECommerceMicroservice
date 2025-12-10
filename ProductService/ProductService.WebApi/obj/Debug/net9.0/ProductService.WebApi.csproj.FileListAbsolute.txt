@@ -150,3 +150,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/MassTransit.Abstractions.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/MassTransit.RabbitMqTransport.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/RabbitMQ.Client.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/Shared.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/Shared.pdb

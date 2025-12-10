@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-SagaStateMachine.Service-5f019b35-fb57-4fc4-ac62-5eb09fc13cc2</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MassTransit.RabbitMQ" Version="9.0.0-develop.27" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.9"/>
+    </ItemGroup>
+</Project>
