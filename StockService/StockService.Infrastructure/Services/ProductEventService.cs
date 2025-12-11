@@ -87,9 +87,13 @@ public class ProductEventService : IProductEventService
             }
             else
             {
-                // Stok kaydı varsa, stok sayısını güncelle
-                stock.Count = productUpdatedEvent.StockCount;
-                await _stockRepository.UpdateAsync(stock, cancellationToken);
+                // Stok kaydı varsa, sadece StockCount belirtilmişse stok sayısını güncelle
+                if (productUpdatedEvent.StockCount.HasValue)
+                {
+                    stock.Count = productUpdatedEvent.StockCount.Value;
+                    await _stockRepository.UpdateAsync(stock, cancellationToken);
+                }
+                // StockCount belirtilmemişse, stok sayısını değiştirme (sadece ürün bilgileri güncellendi)
             }
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);

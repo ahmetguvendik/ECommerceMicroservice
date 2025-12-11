@@ -58,13 +58,17 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
             await _unitOfWork.CommitTransactionAsync(cancellationToken);
 
             // EVENT: ProductUpdatedEvent
-            var productUpdatedEvent = new ProductUpdatedEvent
+            // Sadece stok sayısı belirtilmişse event'e ekle
+            if (request.InitialStockCount.HasValue)
             {
-                Id = product.Id,
-                StockCount = request.InitialStockCount
-            };
-            var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMqSettings.Stock_ProductUpdatedEventQueue}"));
-            await sendEndpoint.Send(productUpdatedEvent, cancellationToken);
+                var productUpdatedEvent = new ProductUpdatedEvent
+                {
+                    Id = product.Id,
+                    StockCount = request.InitialStockCount.Value
+                };
+                var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMqSettings.Stock_ProductUpdatedEventQueue}"));
+                await sendEndpoint.Send(productUpdatedEvent, cancellationToken);
+            }
             
         }
         catch
