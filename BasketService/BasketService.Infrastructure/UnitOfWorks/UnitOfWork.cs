@@ -1,59 +1,48 @@
-using Microsoft.EntityFrameworkCore.Storage;
 using BasketService.Application.UnitOfWorks;
-using BasketService.Infrastructure.Contexts;
 
 namespace BasketService.Infrastructure.UnitOfWorks;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly BasketServiceDbContext _dbContext;
-    private IDbContextTransaction? _dbContextTransaction;
+    private bool _transactionStarted = false;
+    private bool _disposed = false;
 
-    public UnitOfWork(BasketServiceDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-    
     public void Dispose()
     {
-        _dbContextTransaction?.Dispose();
-        _dbContext.Dispose();
-    }
-
-    public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-    {
-        return await _dbContext.SaveChangesAsync(cancellationToken); 
-    }
-
-    public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
-    {
-        if (_dbContextTransaction != null)
+        if (!_disposed)
         {
-            return;
+            _disposed = true;
         }
-        _dbContextTransaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
     }
 
-    public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
+    public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        if (_dbContextTransaction == null)
-        {
-            return;
-        }
-        await _dbContextTransaction.CommitAsync(cancellationToken);
-        await _dbContextTransaction.DisposeAsync();
-        _dbContextTransaction = null;
+        // Redis'te her işlem anında kaydedildiği için bu metod boş
+        // Interface uyumluluğu için korunuyor
+        return Task.FromResult(0);
     }
 
-    public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
+    public Task BeginTransactionAsync(CancellationToken cancellationToken = default)
     {
-        if (_dbContextTransaction == null)
-        {
-            return;
-        }
-        await _dbContextTransaction.RollbackAsync(cancellationToken);
-        await _dbContextTransaction.DisposeAsync();
-        _dbContextTransaction = null;
+        // Redis transaction'ları farklı çalışır, burada sadece flag set ediyoruz
+        // Gerçek transaction gerekiyorsa Redis transaction API'si kullanılabilir
+        _transactionStarted = true;
+        return Task.CompletedTask;
+    }
+
+    public Task CommitTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        // Redis'te her işlem anında kaydedildiği için commit işlemi yok
+        _transactionStarted = false;
+        return Task.CompletedTask;
+    }
+
+    public Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        // Redis'te rollback için özel bir mekanizma yok
+        // Gerçek transaction gerekiyorsa Redis transaction API'si kullanılabilir
+        _transactionStarted = false;
+        return Task.CompletedTask;
     }
 }
 

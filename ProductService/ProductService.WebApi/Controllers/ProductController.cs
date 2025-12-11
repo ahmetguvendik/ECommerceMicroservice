@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Application.Features.Commands.ProductCommands;
+using ProductService.Application.Features.Queries.ProductQueries;
 
 namespace ProductService.WebApi.Controllers;
 
@@ -34,6 +35,17 @@ public class ProductController : ControllerBase
     {
         await  _mediator.Send(command);
         return Ok();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        var result = await _mediator.Send(new GetProductByIdQuery(id));
+        
+        if (result == null)
+            return NotFound($"Product with Id {id} not found.");
+        
+        return Ok(result);
     }
     
 }

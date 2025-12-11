@@ -40,8 +40,6 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Microsoft.OpenApi.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Mono.TextTemplating.dll
-/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Npgsql.dll
-/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -146,3 +144,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/obj/Debug/net9.0/BasketService.WebApi.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/obj/Debug/net9.0/BasketService.WebApi.genruntimeconfig.cache
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/obj/Debug/net9.0/ref/BasketService.WebApi.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Pipelines.Sockets.Unofficial.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/StackExchange.Redis.dll

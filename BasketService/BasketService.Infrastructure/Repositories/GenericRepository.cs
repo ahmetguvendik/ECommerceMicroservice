@@ -1,29 +1,61 @@
 using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
 using BasketService.Application.Repositories;
+using BasketService.Application.Services;
 using BasketService.Domain.Entities;
-using BasketService.Infrastructure.Contexts;
+using BasketService.Infrastructure.Services;
 
 namespace BasketService.Infrastructure.Repositories;
 
-public class GenericRepository<T> : IGenericRepository<T>  where T : BaseEntity{
-    private readonly BasketServiceDbContext  _context;
-    private readonly DbSet<T> _dbSet;
+public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+{
+    private readonly IRedisService _redisService;
+    private readonly string _keyPrefix;
+    private readonly TimeSpan _defaultExpiry = TimeSpan.FromDays(30); // Varsayılan 30 gün
 
-    public GenericRepository(BasketServiceDbContext context)
+    public GenericRepository(IRedisService redisService)
     {
-        _context = context;
-        _dbSet = _context.Set<T>();
+        _redisService = redisService;
+        // Entity tipine göre key prefix belirle
+        _keyPrefix = typeof(T).Name.ToLower() + ":";
     }
-    
+
+    private string GetKey(Guid id) => $"{_keyPrefix}{id}";
+    private string GetKey(string id) => $"{_keyPrefix}{id}";
+
     public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
+        // Redis'te tüm key'leri bulmak için pattern kullan
+        // Not: Bu production'da performans sorunu yaratabilir, gerekirse index kullanılmalı
+        if (_redisService is RedisService redisService)
+        {
+            var database = redisService.GetDatabase();
+            var endpoints = database.Multiplexer.GetEndPoints();
+            if (endpoints.Length == 0)
+                return new List<T>();
+                
+            var server = database.Multiplexer.GetServer(endpoints.First());
+            var keys = server.Keys(pattern: $"{_keyPrefix}*");
+            
+            var results = new List<T>();
+            foreach (var key in keys)
+            {
+                var entity = await _redisService.GetAsync<T>(key.ToString());
+                if (entity != null && !entity.IsDeleted)
+                {
+                    results.Add(entity);
+                }
+            }
+            
+            return results;
+        }
+        
+        throw new InvalidOperationException("RedisService implementation not found");
     }
 
     public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
     {
-        return await _dbSet.Where(predicate).AsNoTracking().ToListAsync(cancellationToken);
+        var all = await GetAllAsync(cancellationToken);
+        return all.Where(predicate.Compile()).ToList();
     }
 
     public async Task<T?> GetByIdAsync(string id, CancellationToken cancellationToken = default)
@@ -37,58 +69,42 @@ public class GenericRepository<T> : IGenericRepository<T>  where T : BaseEntity{
 
     public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        var entity = await _dbSet.FindAsync(new object?[] { id }, cancellationToken: cancellationToken);
+        var key = GetKey(id);
+        var entity = await _redisService.GetAsync<T>(key);
+        
         if (entity != null && entity.IsDeleted)
         {
             return null;
         }
+        
         return entity;
     }
 
     public async Task CreateAsync(T entity, CancellationToken cancellationToken = default)
     {
         entity.CreatedTime = DateTime.UtcNow;
-        await _dbSet.AddAsync(entity, cancellationToken);
+        var key = GetKey(entity.Id);
+        await _redisService.SetAsync(key, entity, _defaultExpiry);
     }
 
     public Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
         entity.ModifiedTime = DateTime.UtcNow;
-        _dbSet.Update(entity);
-        return Task.CompletedTask;
+        var key = GetKey(entity.Id);
+        return _redisService.SetAsync(key, entity, _defaultExpiry);
     }
-    
+
     public Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
     {
         entity.IsDeleted = true;
         entity.ModifiedTime = DateTime.UtcNow;
-        _dbSet.Update(entity);
-        return Task.CompletedTask;
+        var key = GetKey(entity.Id);
+        return _redisService.SetAsync(key, entity, _defaultExpiry);
     }
-    
-    public async Task<T?> RestoreAsync(Guid id, CancellationToken cancellationToken = default)
-    {
-        var entity = await _dbSet.IgnoreQueryFilters().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-        if (entity == null || !entity.IsDeleted)
-        {
-            return null;
-        }
-        
-        entity.IsDeleted = false;
-        entity.ModifiedTime = DateTime.UtcNow;
-        _dbSet.Update(entity);
-        return entity;
-    }
-    
-    public async Task<List<T>> GetDeletedAsync(CancellationToken cancellationToken = default)
-    {
-        return await _dbSet.IgnoreQueryFilters().Where(x => x.IsDeleted).AsNoTracking().ToListAsync(cancellationToken);
-    }
-    
 
     public IQueryable<T> GetQueryable()
     {
-        return _dbSet;
+        // Redis için IQueryable desteği yok, bu yüzden GetAllAsync kullanılmalı
+        throw new NotSupportedException("IQueryable is not supported with Redis. Use GetAllAsync instead.");
     }
 }
-
