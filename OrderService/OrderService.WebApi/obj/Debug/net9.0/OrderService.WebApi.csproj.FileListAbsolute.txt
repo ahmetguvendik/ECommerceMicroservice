@@ -151,3 +151,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.WebApi/obj/Debug/net9.0/OrderService.WebApi.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.WebApi/obj/Debug/net9.0/OrderService.WebApi.genruntimeconfig.cache
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.WebApi/obj/Debug/net9.0/ref/OrderService.WebApi.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.WebApi/bin/Debug/net9.0/Shared.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.WebApi/bin/Debug/net9.0/Shared.pdb

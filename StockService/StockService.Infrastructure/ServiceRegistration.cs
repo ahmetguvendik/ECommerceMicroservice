@@ -34,6 +34,8 @@ public static class ServiceRegistration
         {
             // Consumer'ları register et
             c.AddConsumer<ProductCreatedEventConsumer>();
+            c.AddConsumer<ProductUpdatedEventConsumer>();
+            c.AddConsumer<ProductDeletedEventConsumer>();
             
             c.UsingRabbitMq((context, cfg) =>
             {
@@ -44,6 +46,16 @@ public static class ServiceRegistration
                 cfg.ReceiveEndpoint(RabbitMqSettings.Stock_ProductCreatedEventQueue, e =>
                 {
                     e.ConfigureConsumer<ProductCreatedEventConsumer>(context);
+                });
+                
+                cfg.ReceiveEndpoint(RabbitMqSettings.Stock_ProductUpdatedEventQueue, e =>
+                {
+                    e.ConfigureConsumer<ProductUpdatedEventConsumer>(context);
+                });
+                
+                cfg.ReceiveEndpoint(RabbitMqSettings.Stock_ProductDeletedEventQueue, e =>
+                {
+                    e.ConfigureConsumer<ProductDeletedEventConsumer>(context);
                 });
             });
         }); 

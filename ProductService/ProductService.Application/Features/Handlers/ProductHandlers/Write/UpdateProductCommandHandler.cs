@@ -14,20 +14,17 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
     private readonly IGenericRepository<Product> _productRepository;
     private readonly IGenericRepository<ProductCategory> _productCategoryRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IPublishEndpoint _publishEndpoint;
     private readonly ISendEndpointProvider _sendEndpointProvider;
 
     public UpdateProductCommandHandler(
         IGenericRepository<Product> productRepository,
         IGenericRepository<ProductCategory> productCategoryRepository,
         IUnitOfWork unitOfWork,
-        IPublishEndpoint publishEndpoint,
         ISendEndpointProvider sendEndpointProvider)
     {
         _productRepository = productRepository;
         _productCategoryRepository = productCategoryRepository;
         _unitOfWork = unitOfWork;
-        _publishEndpoint = publishEndpoint;
         _sendEndpointProvider = sendEndpointProvider;
     }
 
@@ -64,11 +61,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
             var productUpdatedEvent = new ProductUpdatedEvent
             {
                 Id = product.Id,
-                ProductCategoryId = product.ProductCategoryId,
-                Name = product.Name,
-                Sku = product.Sku,
-                Price = product.Price,
-                IsActive = product.IsActive
+                StockCount = request.InitialStockCount
             };
             var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMqSettings.Stock_ProductUpdatedEventQueue}"));
             await sendEndpoint.Send(productUpdatedEvent, cancellationToken);

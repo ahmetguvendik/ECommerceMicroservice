@@ -14,7 +14,8 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "OrderService.Application": "1.0.0",
-          "OrderService.Domain": "1.0.0"
+          "OrderService.Domain": "1.0.0",
+          "Shared": "1.0.0"
         },
         "runtime": {
           "OrderService.Infrastructure.dll": {}
@@ -808,6 +809,14 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Shared/1.0.0": {
+        "runtime": {
+          "Shared.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1243,6 +1252,11 @@
       "sha512": ""
     },
     "OrderService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

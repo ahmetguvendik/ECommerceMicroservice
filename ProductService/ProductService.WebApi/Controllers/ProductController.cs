@@ -1,8 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Application.Features.Commands.ProductCommands;
-using ProductService.Application.UnitOfWorks;
-using ProductService.Domain.Entities;
 
 namespace ProductService.WebApi.Controllers;
 
@@ -19,6 +17,20 @@ public class ProductController : ControllerBase
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateProductCommand  command)
+    {
+        await  _mediator.Send(command);
+        return Ok();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update([FromBody] UpdateProductCommand command)
+    {
+        await  _mediator.Send(command);
+        return Ok();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> Delete([FromBody] DeleteProductCommand command)
     {
         await  _mediator.Send(command);
         return Ok();

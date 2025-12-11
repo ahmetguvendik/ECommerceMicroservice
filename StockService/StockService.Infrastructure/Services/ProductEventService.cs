@@ -30,7 +30,10 @@ public class ProductEventService : IProductEventService
         try
         {
             // Yeni ürün için stok kaydı oluştur
-            var existingStock = await _stockRepository.GetByIdAsync(productCreatedEvent.ProdcutId, cancellationToken);
+            // Stock entity'sinde Id (kendi ID'si) ve ProductId (ürün ID'si) var
+            // ProductId ile arama yapmalıyız
+            var existingStocks = await _stockRepository.GetAllAsync(s => s.ProductId == productCreatedEvent.ProdcutId, cancellationToken);
+            var existingStock = existingStocks.FirstOrDefault();
             
             if (existingStock != null)
             {
@@ -62,6 +65,69 @@ public class ProductEventService : IProductEventService
            creationFailedEvent.FailedAt = DateTime.UtcNow;
            await sendEndpoint.Send(creationFailedEvent, cancellationToken);
             throw;
+        }
+    }
+
+    public async Task HandleProductUpdatedAsync(ProductUpdatedEvent productUpdatedEvent, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            // Ürün güncellendiğinde, stok kaydını bul ve stok sayısını güncelle
+            // Stock entity'sinde Id (kendi ID'si) ve ProductId (ürün ID'si) var
+            // ProductId ile arama yapmalıyız
+            var stocks = await _stockRepository.GetAllAsync(s => s.ProductId == productUpdatedEvent.Id, cancellationToken);
+            var stock = stocks.FirstOrDefault();
+            
+            await _unitOfWork.BeginTransactionAsync(cancellationToken);
+            
+            if (stock == null)
+            {
+                // Stok kaydı yoksa oluştur (normalde bu durum olmamalı, ama güvenlik için)
+                throw new Exception("Stock not found");
+            }
+            else
+            {
+                // Stok kaydı varsa, stok sayısını güncelle
+                stock.Count = productUpdatedEvent.StockCount;
+                await _stockRepository.UpdateAsync(stock, cancellationToken);
+            }
+
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.CommitTransactionAsync(cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            await _unitOfWork.RollbackTransactionAsync(cancellationToken);
+            // Hata durumunda loglama yapılabilir
+            throw;
+        }
+    }
+
+    public async Task HandleProductDeletedAsync(ProductDeletedEvent productDeletedEvent, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var stocks =
+                await _stockRepository.GetAllAsync(x => x.ProductId == productDeletedEvent.Id, cancellationToken);
+            var stock = stocks.FirstOrDefault();
+            await _unitOfWork.BeginTransactionAsync(cancellationToken);
+            if (stock == null)
+            {
+                throw new Exception("Stock not found");
+            }
+            else
+            {
+                await _stockRepository.DeleteAsync(stock, cancellationToken);
+
+            }
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.CommitTransactionAsync(cancellationToken);
+
+        }
+        catch (Exception e)
+        {
+            await _unitOfWork.RollbackTransactionAsync(cancellationToken);
+            throw new Exception("Error", e);
         }
     }
 }

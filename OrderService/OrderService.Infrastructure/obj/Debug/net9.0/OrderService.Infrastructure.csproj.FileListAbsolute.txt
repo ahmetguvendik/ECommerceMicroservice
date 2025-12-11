@@ -18,3 +18,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Infrastructure/obj/Debug/net9.0/OrderService.Infrastructure.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Infrastructure/obj/Debug/net9.0/OrderService.Infrastructure.genruntimeconfig.cache
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Infrastructure/obj/Debug/net9.0/ref/OrderService.Infrastructure.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Infrastructure/bin/Debug/net9.0/Shared.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Infrastructure/bin/Debug/net9.0/Shared.pdb

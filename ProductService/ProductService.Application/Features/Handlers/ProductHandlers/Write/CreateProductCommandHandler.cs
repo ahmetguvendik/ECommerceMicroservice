@@ -44,6 +44,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
                 Sku = request.Sku,
                 Price = request.Price,
                 IsActive = request.IsActive,
+                ProductCategoryId = request.ProductCategoryId,
                 CreatedTime = DateTime.UtcNow
             };
 
