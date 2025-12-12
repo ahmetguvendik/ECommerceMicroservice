@@ -1,6 +1,6 @@
 namespace OrderService.Domain.Enums;
 
-public enum OrderStatus
+public enum OrderStatues
 {
     Suspend,
     Fail,
