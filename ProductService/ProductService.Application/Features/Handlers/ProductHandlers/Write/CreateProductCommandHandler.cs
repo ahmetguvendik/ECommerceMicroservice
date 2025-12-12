@@ -45,7 +45,6 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
                 Price = request.Price,
                 IsActive = request.IsActive,
                 ProductCategoryId = request.ProductCategoryId,
-                CreatedTime = DateTime.UtcNow
             };
 
             await _productRepository.CreateAsync(product, cancellationToken);

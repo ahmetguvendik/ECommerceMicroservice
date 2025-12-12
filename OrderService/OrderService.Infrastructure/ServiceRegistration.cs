@@ -10,6 +10,7 @@ using OrderService.Infrastructure.Consumers;
 using OrderService.Infrastructure.Repositories;
 using OrderService.Infrastructure.Services;
 using OrderService.Infrastructure.UnitOfWorks;
+using Shared;
 
 namespace OrderService.Infrastructure;
 
@@ -36,7 +37,7 @@ public static class ServiceRegistration
             cfg.UsingRabbitMq((context, hostConfig) =>
             {
                 hostConfig.Host(configuration.GetConnectionString("RabbitMq"));
-                hostConfig.ReceiveEndpoint("order-started-event-queue", endpoint =>
+                hostConfig.ReceiveEndpoint(RabbitMqSettings.Stock_OrderStartedEventQueue, endpoint =>
                 {
                     endpoint.ConfigureConsumer<OrderStartedEventConsumer>(context);
                 });

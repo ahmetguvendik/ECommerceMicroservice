@@ -25,22 +25,33 @@ public class OrderEventService : IOrderEventService
             throw new InvalidOperationException("OrderStartedEvent does not contain order items.");
         }
 
-        var command = new CreateOrderCommand
+        try
         {
-            CustomerId = orderStartedEvent.CustomerId,
-            TotalAmount = orderStartedEvent.TotalAmount,
-            Statues = OrderStatues.Suspend,
-            OrderItemList = orderStartedEvent.Items.Select(item => new OrderItem
+            var command = new CreateOrderCommand
             {
-                Id = Guid.NewGuid(),
-                OrderId = Guid.Empty,
-                ProductId = item.ProductId,
-                ProductName = item.ProductName,
-                Quantity = item.Quantity,
-                UnitPrice = item.UnitPrice
-            }).ToList()
-        };
+                OrderId = orderStartedEvent.OrderId != Guid.Empty ? orderStartedEvent.OrderId : Guid.NewGuid(),
+                CustomerId = orderStartedEvent.CustomerId,
+                TotalAmount = orderStartedEvent.TotalAmount,
+                Statues = OrderStatues.Suspend,
+                OrderItemList = orderStartedEvent.Items.Select(item => new OrderItem
+                {
+                    Id = Guid.NewGuid(),
+                    OrderId = Guid.Empty,
+                    ProductId = item.ProductId,
+                    ProductName = item.ProductName,
+                    Quantity = item.Quantity,
+                    UnitPrice = item.UnitPrice
+                }).ToList()
+            };
 
-        await _mediator.Send(command, cancellationToken);
+            await _mediator.Send(command, cancellationToken);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            //Burada hata olduguna dair islemleri yap
+            throw;
+        }
+       
     }
 }

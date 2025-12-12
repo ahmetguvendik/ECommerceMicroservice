@@ -55,7 +55,7 @@ public class ProductEventService : IProductEventService
 
         }
         catch (Exception ex)
-        {
+        { 
             await _unitOfWork.RollbackTransactionAsync(cancellationToken);
             //basarisiz olursa tekrardan product a bildirmek gerekiyor!!
            var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMqSettings.Product_StockCreationFailedEvent}"));

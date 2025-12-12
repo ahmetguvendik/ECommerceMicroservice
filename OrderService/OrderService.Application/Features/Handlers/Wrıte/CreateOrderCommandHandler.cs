@@ -18,16 +18,20 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
     private readonly IUnitOfWork _unitOfWork;
     private readonly IPublishEndpoint _publishEndpoint;
 
+
     public CreateOrderCommandHandler(IGenericRepository<Order> orderRepository, IUnitOfWork unitOfWork, IPublishEndpoint publishEndpoint)
     {
          _orderRepository = orderRepository;
          _unitOfWork = unitOfWork;
          _publishEndpoint = publishEndpoint;
+
     }
     
     public async Task Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
         await _unitOfWork.BeginTransactionAsync(cancellationToken);
+        var orderId = request.OrderId != Guid.Empty ? request.OrderId : Guid.NewGuid();
+
         try
         {
             if (request.OrderItemList == null || !request.OrderItemList.Any())
@@ -35,7 +39,6 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
                 throw new ArgumentException("Sipariş en az bir ürün içermelidir.", nameof(request.OrderItemList));
             }
 
-            var orderId = Guid.NewGuid();
             var orderDate = DateTime.UtcNow;
             var orderItems = request.OrderItemList
                 .Select(item => new OrderItem
@@ -58,8 +61,6 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
                 Items = orderItems,
                 TotalAmount = request.TotalAmount > 0 ? request.TotalAmount : computedTotal,
                 Statues = request.Statues == default ? OrderStatues.Suspend : (OrderStatues)request.Statues,
-                CreatedTime = orderDate,
-                ModifiedTime = orderDate
             };
 
             await _orderRepository.CreateAsync(order, cancellationToken);
@@ -90,6 +91,9 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
         catch (Exception e)
         {
             await _unitOfWork.RollbackTransactionAsync(cancellationToken);
+            var orderFailedEvent = new OrderFailedEvent();
+            orderFailedEvent.OrderId = orderId;
+            await _publishEndpoint.Publish(orderFailedEvent, cancellationToken);
             throw new ApplicationException($"An error occurred processing {nameof(CreateOrderCommand)}", e);
         }
     }
