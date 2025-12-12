@@ -52,6 +52,19 @@
           }
         }
       },
+      "MassTransit.Abstractions/9.0.0-develop.27": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MediatR/13.1.0": {
         "type": "package",
         "dependencies": {
@@ -190,6 +203,19 @@
         "runtime": {
           "bin/placeholder/OrderService.Domain.dll": {}
         }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "OrderService.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
       }
     }
   },
@@ -243,6 +269,29 @@
         "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
         "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll",
         "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
+      ]
+    },
+    "MassTransit.Abstractions/9.0.0-develop.27": {
+      "sha512": "uMnz5s3xviSybj3iboEG7B6yZMdHQv6l4TtdHrrIPGPbRL2npcHX17s5aE9SDyWHRP460V0lCNyD+1xHUjV+Sg==",
+      "type": "package",
+      "path": "masstransit.abstractions/9.0.0-develop.27",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NuGet.README.md",
+        "lib/net10.0/MassTransit.Abstractions.dll",
+        "lib/net10.0/MassTransit.Abstractions.xml",
+        "lib/net472/MassTransit.Abstractions.dll",
+        "lib/net472/MassTransit.Abstractions.xml",
+        "lib/net8.0/MassTransit.Abstractions.dll",
+        "lib/net8.0/MassTransit.Abstractions.xml",
+        "lib/net9.0/MassTransit.Abstractions.dll",
+        "lib/net9.0/MassTransit.Abstractions.xml",
+        "lib/netstandard2.0/MassTransit.Abstractions.dll",
+        "lib/netstandard2.0/MassTransit.Abstractions.xml",
+        "masstransit.abstractions.9.0.0-develop.27.nupkg.sha512",
+        "masstransit.abstractions.nuspec",
+        "mt-logo-small.png"
       ]
     },
     "MediatR/13.1.0": {
@@ -484,15 +533,22 @@
       "type": "project",
       "path": "../OrderService.Domain/OrderService.Domain.csproj",
       "msbuildProject": "../OrderService.Domain/OrderService.Domain.csproj"
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../../Shared/Shared.csproj",
+      "msbuildProject": "../../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "FluentValidation >= 12.1.1",
       "FluentValidation.AspNetCore >= 11.3.1",
+      "MassTransit.Abstractions >= 9.0.0-develop.27",
       "MediatR >= 13.1.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 9.0.11",
-      "OrderService.Domain >= 1.0.0"
+      "OrderService.Domain >= 1.0.0",
+      "Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -522,6 +578,9 @@
           "projectReferences": {
             "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Domain/OrderService.Domain.csproj": {
               "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Domain/OrderService.Domain.csproj"
+            },
+            "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj": {
+              "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj"
             }
           }
         }
@@ -549,6 +608,10 @@
           "FluentValidation.AspNetCore": {
             "target": "Package",
             "version": "[11.3.1, )"
+          },
+          "MassTransit.Abstractions": {
+            "target": "Package",
+            "version": "[9.0.0-develop.27, )"
           },
           "MediatR": {
             "target": "Package",

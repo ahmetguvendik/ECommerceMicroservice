@@ -14,7 +14,7 @@ public class ProductService : IProductService
     {
         _httpClient = httpClient;
         _configuration = configuration;
-        var productServiceUrl = _configuration["ServiceUrls:ProductService"] ?? "https://localhost:7001";
+        var productServiceUrl = _configuration["ServiceUrls:ProductService"];
         _httpClient.BaseAddress = new Uri(productServiceUrl);
     }
 

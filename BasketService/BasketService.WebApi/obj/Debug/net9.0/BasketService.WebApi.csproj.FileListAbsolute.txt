@@ -146,3 +146,11 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/obj/Debug/net9.0/ref/BasketService.WebApi.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Pipelines.Sockets.Unofficial.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/StackExchange.Redis.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/MassTransit.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/MassTransit.Abstractions.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/MassTransit.RabbitMqTransport.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/RabbitMQ.Client.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/OrderService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Shared.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/OrderService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Shared.pdb

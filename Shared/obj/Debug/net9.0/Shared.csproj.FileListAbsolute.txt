@@ -10,3 +10,7 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/obj/Debug/net9.0/refint/Shared.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/obj/Debug/net9.0/Shared.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/obj/Debug/net9.0/ref/Shared.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/bin/Debug/net9.0/OrderService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/bin/Debug/net9.0/OrderService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/obj/Debug/net9.0/Shared.csproj.AssemblyReference.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/obj/Debug/net9.0/Shared.csproj.Up2Date

@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
@@ -31,6 +32,14 @@ public static class ServiceRegistration
         // HTTP Client Services (External Services)
         collection.AddHttpClient<IProductService, Infrastructure.Services.ProductService>();
         collection.AddHttpClient<IStockService, Infrastructure.Services.StockService>();
+
+        collection.AddMassTransit(cfg =>
+        {
+            cfg.UsingRabbitMq((context, hostConfig) =>
+            {
+                hostConfig.Host(configuration.GetConnectionString("RabbitMq"));
+            });
+        });
     }
 }
 

@@ -11,8 +11,10 @@
           "BasketService.Domain": "1.0.0",
           "FluentValidation": "12.1.1",
           "FluentValidation.AspNetCore": "11.3.1",
+          "MassTransit.Abstractions": "9.0.0-develop.27",
           "MediatR": "13.1.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
+          "Shared": "1.0.0"
         },
         "runtime": {
           "BasketService.Application.dll": {}
@@ -47,6 +49,14 @@
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "assemblyVersion": "11.0.0.0",
             "fileVersion": "11.11.0.0"
+          }
+        }
+      },
+      "MassTransit.Abstractions/9.0.0-develop.27": {
+        "runtime": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
           }
         }
       },
@@ -134,6 +144,25 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "OrderService.Domain/1.0.0": {
+        "runtime": {
+          "OrderService.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Shared/1.0.0": {
+        "dependencies": {
+          "OrderService.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Shared.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -163,6 +192,13 @@
       "sha512": "sha512-viTKWaMbL3yJYgGI0DiCeavNbE9UPMWFVK2XS9nYXGbm3NDMd0/L5ER4wBzmTtW3BYh3SrlSXm9RACiKZ6stlA==",
       "path": "fluentvalidation.dependencyinjectionextensions/11.11.0",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512"
+    },
+    "MassTransit.Abstractions/9.0.0-develop.27": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uMnz5s3xviSybj3iboEG7B6yZMdHQv6l4TtdHrrIPGPbRL2npcHX17s5aE9SDyWHRP460V0lCNyD+1xHUjV+Sg==",
+      "path": "masstransit.abstractions/9.0.0-develop.27",
+      "hashPath": "masstransit.abstractions.9.0.0-develop.27.nupkg.sha512"
     },
     "MediatR/13.1.0": {
       "type": "package",
@@ -221,6 +257,16 @@
       "hashPath": "microsoft.identitymodel.tokens.8.14.0.nupkg.sha512"
     },
     "BasketService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OrderService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

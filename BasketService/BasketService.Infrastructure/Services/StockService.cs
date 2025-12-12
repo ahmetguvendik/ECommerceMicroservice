@@ -14,7 +14,7 @@ public class StockService : IStockService
     {
         _httpClient = httpClient;
         _configuration = configuration;
-        var stockServiceUrl = _configuration["ServiceUrls:StockService"] ?? "https://localhost:7002";
+        var stockServiceUrl = _configuration["ServiceUrls:StockService"];
         _httpClient.BaseAddress = new Uri(stockServiceUrl);
     }
 

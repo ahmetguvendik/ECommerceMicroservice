@@ -28,6 +28,9 @@
             "projectReferences": {
               "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Domain/OrderService.Domain.csproj": {
                 "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Domain/OrderService.Domain.csproj"
+              },
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj"
               }
             }
           }
@@ -55,6 +58,10 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.3.1, )"
+            },
+            "MassTransit.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0-develop.27, )"
             },
             "MediatR": {
               "target": "Package",
@@ -258,7 +265,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Domain/OrderService.Domain.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Domain/OrderService.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -1349,9 +1349,11 @@
         "dependencies": {
           "FluentValidation": "12.1.1",
           "FluentValidation.AspNetCore": "11.3.1",
+          "MassTransit.Abstractions": "9.0.0-develop.27",
           "MediatR": "13.1.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
-          "OrderService.Domain": "1.0.0"
+          "OrderService.Domain": "1.0.0",
+          "Shared": "1.0.0"
         },
         "compile": {
           "bin/placeholder/OrderService.Application.dll": {}
@@ -1392,6 +1394,9 @@
       "Shared/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "OrderService.Domain": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Shared.dll": {}
         },

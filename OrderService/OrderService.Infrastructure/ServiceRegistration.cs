@@ -3,9 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OrderService.Application.Repositories;
+using OrderService.Application.Services;
 using OrderService.Application.UnitOfWorks;
 using OrderService.Infrastructure.Contexts;
+using OrderService.Infrastructure.Consumers;
 using OrderService.Infrastructure.Repositories;
+using OrderService.Infrastructure.Services;
 using OrderService.Infrastructure.UnitOfWorks;
 
 namespace OrderService.Infrastructure;
@@ -23,11 +26,21 @@ public static class ServiceRegistration
         collection.AddScoped<IUnitOfWork, UnitOfWork>();
         
         //Services
+        collection.AddScoped<IOrderEventService, OrderEventService>();
         
         //Mass Transit (Rabbitmq)
-        collection.AddMassTransit(c => c.UsingRabbitMq((context, cfg) =>
+        collection.AddMassTransit(cfg =>
         {
-            cfg.Host(configuration.GetConnectionString("RabbitMq"));
-        }));
+            cfg.AddConsumer<OrderStartedEventConsumer>();
+
+            cfg.UsingRabbitMq((context, hostConfig) =>
+            {
+                hostConfig.Host(configuration.GetConnectionString("RabbitMq"));
+                hostConfig.ReceiveEndpoint("order-started-event-queue", endpoint =>
+                {
+                    endpoint.ConfigureConsumer<OrderStartedEventConsumer>(context);
+                });
+            });
+        });
     }
 }

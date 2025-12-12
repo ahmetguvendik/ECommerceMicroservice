@@ -10,6 +10,6 @@ public class OrderServiceDbContext : DbContext
         
     }
 
-    public DbSet<Order> Type { get; set; }
+    public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItem { get; set; }
 }

@@ -14,3 +14,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Application/obj/Debug/net9.0/refint/OrderService.Application.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Application/obj/Debug/net9.0/OrderService.Application.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Application/obj/Debug/net9.0/ref/OrderService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Application/bin/Debug/net9.0/Shared.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Application/bin/Debug/net9.0/Shared.pdb

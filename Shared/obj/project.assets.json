@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "OrderService.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/OrderService.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OrderService.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "OrderService.Domain/1.0.0": {
+      "type": "project",
+      "path": "../OrderService/OrderService.Domain/OrderService.Domain.csproj",
+      "msbuildProject": "../OrderService/OrderService.Domain/OrderService.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "OrderService.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/ahmetguvendik/.nuget/packages/": {}
@@ -31,7 +50,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Domain/OrderService.Domain.csproj": {
+              "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Domain/OrderService.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

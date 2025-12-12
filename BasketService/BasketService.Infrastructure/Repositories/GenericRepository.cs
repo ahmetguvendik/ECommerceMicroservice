@@ -10,7 +10,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
     private readonly IRedisService _redisService;
     private readonly string _keyPrefix;
-    private readonly TimeSpan _defaultExpiry = TimeSpan.FromDays(30); // Varsayılan 30 gün
+    private readonly TimeSpan _defaultExpiry = TimeSpan.FromHours(1); // Varsayılan 1 saat
 
     public GenericRepository(IRedisService redisService)
     {

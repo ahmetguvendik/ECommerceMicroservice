@@ -153,3 +153,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.WebApi/obj/Debug/net9.0/StockService.WebApi.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.WebApi/obj/Debug/net9.0/StockService.WebApi.genruntimeconfig.cache
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.WebApi/obj/Debug/net9.0/ref/StockService.WebApi.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.WebApi/bin/Debug/net9.0/OrderService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.WebApi/bin/Debug/net9.0/OrderService.Domain.pdb

@@ -603,6 +603,16 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "OrderService.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/OrderService.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OrderService.Domain.dll": {}
+        }
+      },
       "ProductService.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -635,6 +645,9 @@
       "Shared/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "OrderService.Domain": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Shared.dll": {}
         },
@@ -1504,6 +1517,11 @@
         "system.threading.ratelimiting.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "OrderService.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../OrderService/OrderService.Domain/OrderService.Domain.csproj",
+      "msbuildProject": "../../OrderService/OrderService.Domain/OrderService.Domain.csproj"
     },
     "ProductService.Application/1.0.0": {
       "type": "project",

@@ -16,3 +16,7 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Infrastructure/obj/Debug/net9.0/refint/BasketService.Infrastructure.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Infrastructure/obj/Debug/net9.0/BasketService.Infrastructure.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Infrastructure/obj/Debug/net9.0/ref/BasketService.Infrastructure.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Infrastructure/bin/Debug/net9.0/OrderService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Infrastructure/bin/Debug/net9.0/Shared.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Infrastructure/bin/Debug/net9.0/OrderService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Infrastructure/bin/Debug/net9.0/Shared.pdb

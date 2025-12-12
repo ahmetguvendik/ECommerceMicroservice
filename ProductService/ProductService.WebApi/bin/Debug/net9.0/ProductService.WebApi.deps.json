@@ -830,6 +830,14 @@
       },
       "System.Threading.Channels/7.0.0": {},
       "System.Threading.RateLimiting/8.0.0": {},
+      "OrderService.Domain/1.0.0": {
+        "runtime": {
+          "OrderService.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "ProductService.Application/1.0.0": {
         "dependencies": {
           "FluentValidation": "12.1.1",
@@ -871,6 +879,9 @@
         }
       },
       "Shared/1.0.0": {
+        "dependencies": {
+          "OrderService.Domain": "1.0.0"
+        },
         "runtime": {
           "Shared.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -1347,6 +1358,11 @@
       "sha512": "sha512-7mu9v0QDv66ar3DpGSZHg9NuNcxDaaAcnMULuZlaTpP9+hwXhrxNGsF5GmLkSHxFdb5bBc1TzeujsRgTrPWi+Q==",
       "path": "system.threading.ratelimiting/8.0.0",
       "hashPath": "system.threading.ratelimiting.8.0.0.nupkg.sha512"
+    },
+    "OrderService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "ProductService.Application/1.0.0": {
       "type": "project",

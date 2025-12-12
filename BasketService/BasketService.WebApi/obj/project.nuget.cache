@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FqGCJP280W0=",
+  "dgSpecHash": "wbxCXlbUnBA=",
   "success": true,
   "projectFilePath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/BasketService.WebApi.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,9 @@
     "/Users/ahmetguvendik/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.11.0/fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/masstransit/9.0.0-develop.27/masstransit.9.0.0-develop.27.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/masstransit.abstractions/9.0.0-develop.27/masstransit.abstractions.9.0.0-develop.27.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/masstransit.rabbitmq/9.0.0-develop.27/masstransit.rabbitmq.9.0.0-develop.27.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr/13.1.0/mediatr.13.1.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
@@ -35,6 +38,10 @@
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.dependencymodel/9.0.11/microsoft.extensions.dependencymodel.9.0.11.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.diagnostics/9.0.0/microsoft.extensions.diagnostics.9.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.diagnostics.abstractions/9.0.0/microsoft.extensions.diagnostics.abstractions.9.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.diagnostics.healthchecks/9.0.0/microsoft.extensions.diagnostics.healthchecks.9.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.diagnostics.healthchecks.abstractions/9.0.0/microsoft.extensions.diagnostics.healthchecks.abstractions.9.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.fileproviders.abstractions/9.0.0/microsoft.extensions.fileproviders.abstractions.9.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.hosting.abstractions/9.0.0/microsoft.extensions.hosting.abstractions.9.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.http/9.0.0/microsoft.extensions.http.9.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.logging/9.0.11/microsoft.extensions.logging.9.0.11.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.11/microsoft.extensions.logging.abstractions.9.0.11.nupkg.sha512",
@@ -48,6 +55,7 @@
     "/Users/ahmetguvendik/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/pipelines.sockets.unofficial/2.2.8/pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/rabbitmq.client/7.2.0/rabbitmq.client.7.2.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/stackexchange.redis/2.8.16/stackexchange.redis.2.8.16.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/swashbuckle.aspnetcore/6.9.0/swashbuckle.aspnetcore.6.9.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/swashbuckle.aspnetcore.swagger/6.9.0/swashbuckle.aspnetcore.swagger.6.9.0.nupkg.sha512",
@@ -61,11 +69,12 @@
     "/Users/ahmetguvendik/.nuget/packages/system.composition.hosting/7.0.0/system.composition.hosting.7.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.composition.runtime/7.0.0/system.composition.runtime.7.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.composition.typedparts/7.0.0/system.composition.typedparts.7.0.0.nupkg.sha512",
-    "/Users/ahmetguvendik/.nuget/packages/system.io.pipelines/7.0.0/system.io.pipelines.7.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.reflection.metadata/7.0.0/system.reflection.metadata.7.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.text.json/9.0.11/system.text.json.9.0.11.nupkg.sha512",
-    "/Users/ahmetguvendik/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512"
+    "/Users/ahmetguvendik/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/system.threading.ratelimiting/8.0.0/system.threading.ratelimiting.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

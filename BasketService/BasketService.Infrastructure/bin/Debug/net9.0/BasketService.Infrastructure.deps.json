@@ -10,6 +10,7 @@
         "dependencies": {
           "BasketService.Application": "1.0.0",
           "BasketService.Domain": "1.0.0",
+          "MassTransit.RabbitMQ": "9.0.0-develop.27",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "Microsoft.Extensions.Http": "9.0.0",
           "StackExchange.Redis": "2.8.16",
@@ -48,6 +49,42 @@
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "assemblyVersion": "11.0.0.0",
             "fileVersion": "11.11.0.0"
+          }
+        }
+      },
+      "MassTransit/9.0.0-develop.27": {
+        "dependencies": {
+          "MassTransit.Abstractions": "9.0.0-develop.27",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Options": "9.0.0"
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        }
+      },
+      "MassTransit.Abstractions/9.0.0-develop.27": {
+        "runtime": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        }
+      },
+      "MassTransit.RabbitMQ/9.0.0-develop.27": {
+        "dependencies": {
+          "MassTransit": "9.0.0-develop.27",
+          "RabbitMQ.Client": "7.2.0"
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.RabbitMqTransport.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
           }
         }
       },
@@ -113,6 +150,29 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "Microsoft.Extensions.Options": "9.0.0"
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Options": "9.0.0"
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/9.0.0": {},
+      "Microsoft.Extensions.FileProviders.Abstractions/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.0"
+        }
+      },
+      "Microsoft.Extensions.Hosting.Abstractions/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "9.0.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.0"
         }
       },
       "Microsoft.Extensions.Http/9.0.0": {
@@ -197,12 +257,24 @@
       },
       "Pipelines.Sockets.Unofficial/2.2.8": {
         "dependencies": {
-          "System.IO.Pipelines": "5.0.1"
+          "System.IO.Pipelines": "8.0.0"
         },
         "runtime": {
           "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "2.2.8.1080"
+          }
+        }
+      },
+      "RabbitMQ.Client/7.2.0": {
+        "dependencies": {
+          "System.IO.Pipelines": "8.0.0",
+          "System.Threading.RateLimiting": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.2.0.0"
           }
         }
       },
@@ -218,15 +290,18 @@
           }
         }
       },
-      "System.IO.Pipelines/5.0.1": {},
+      "System.IO.Pipelines/8.0.0": {},
       "System.Text.Json/9.0.0": {},
+      "System.Threading.RateLimiting/8.0.0": {},
       "BasketService.Application/1.0.0": {
         "dependencies": {
           "BasketService.Domain": "1.0.0",
           "FluentValidation": "12.1.1",
           "FluentValidation.AspNetCore": "11.3.1",
+          "MassTransit.Abstractions": "9.0.0-develop.27",
           "MediatR": "13.1.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
+          "Shared": "1.0.0"
         },
         "runtime": {
           "BasketService.Application.dll": {
@@ -238,6 +313,25 @@
       "BasketService.Domain/1.0.0": {
         "runtime": {
           "BasketService.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "OrderService.Domain/1.0.0": {
+        "runtime": {
+          "OrderService.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Shared/1.0.0": {
+        "dependencies": {
+          "OrderService.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Shared.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -271,6 +365,27 @@
       "sha512": "sha512-viTKWaMbL3yJYgGI0DiCeavNbE9UPMWFVK2XS9nYXGbm3NDMd0/L5ER4wBzmTtW3BYh3SrlSXm9RACiKZ6stlA==",
       "path": "fluentvalidation.dependencyinjectionextensions/11.11.0",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512"
+    },
+    "MassTransit/9.0.0-develop.27": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fiMkB4Zd0AG5C99Pg6vwPyY9NSF0WoqMeHv8aD3MeVMWoIRLtJZY/+vw+PeE8mRxvJcHUfoaoN1BOg9/SIADWw==",
+      "path": "masstransit/9.0.0-develop.27",
+      "hashPath": "masstransit.9.0.0-develop.27.nupkg.sha512"
+    },
+    "MassTransit.Abstractions/9.0.0-develop.27": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uMnz5s3xviSybj3iboEG7B6yZMdHQv6l4TtdHrrIPGPbRL2npcHX17s5aE9SDyWHRP460V0lCNyD+1xHUjV+Sg==",
+      "path": "masstransit.abstractions/9.0.0-develop.27",
+      "hashPath": "masstransit.abstractions.9.0.0-develop.27.nupkg.sha512"
+    },
+    "MassTransit.RabbitMQ/9.0.0-develop.27": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SnD9yuNVTa1e4FwrgeNuimFHY9hW3qKYcSTg2aejXeTXC/TzL8g2OsLuz9iV3EDe7KO9X+ZUUYSgBimeZ46O2Q==",
+      "path": "masstransit.rabbitmq/9.0.0-develop.27",
+      "hashPath": "masstransit.rabbitmq.9.0.0-develop.27.nupkg.sha512"
     },
     "MediatR/13.1.0": {
       "type": "package",
@@ -334,6 +449,34 @@
       "sha512": "sha512-1K8P7XzuzX8W8pmXcZjcrqS6x5eSSdvhQohmcpgiQNY/HlDAlnrhR9dvlURfFz428A+RTCJpUyB+aKTA6AgVcQ==",
       "path": "microsoft.extensions.diagnostics.abstractions/9.0.0",
       "hashPath": "microsoft.extensions.diagnostics.abstractions.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cxsK9/Dx7Ka9sfiA1nY8XlSzIaWff5FNRw0+ls8yR+aGzmnah5JGKsTHgQrehjMwGAVud/pjiUZ9MWizfUSkTQ==",
+      "path": "microsoft.extensions.diagnostics.healthchecks/9.0.0",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H1IbHm/MnUgEV0N07WrkPBIIoX7isP6IPaqUdZ3CwbMcUVDGIu+okamW28kyDRfIiZqbTbyHuNIkr4ZSHPyvDw==",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/9.0.0",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.abstractions.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uK439QzYR0q2emLVtYzwyK3x+T5bTY4yWsd/k/ZUS9LR6Sflp8MIdhGXW8kQCd86dQD4tLqvcbLkku8qHY263Q==",
+      "path": "microsoft.extensions.fileproviders.abstractions/9.0.0",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Hosting.Abstractions/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yUKJgu81ExjvqbNWqZKshBbLntZMbMVz/P7Way2SBx7bMqA08Mfdc9O7hWDKAiSp+zPUGT6LKcSCQIPeDK+CCw==",
+      "path": "microsoft.extensions.hosting.abstractions/9.0.0",
+      "hashPath": "microsoft.extensions.hosting.abstractions.9.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Http/9.0.0": {
       "type": "package",
@@ -412,6 +555,13 @@
       "path": "pipelines.sockets.unofficial/2.2.8",
       "hashPath": "pipelines.sockets.unofficial.2.2.8.nupkg.sha512"
     },
+    "RabbitMQ.Client/7.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PPQ7cF7lwbhqC4up6en1bTUZlz06YqQwJecOJzsguTtyhNA7oL5uNDZIx/h6ZfcyPZV4V3DYKSCxfm4RUFLcbA==",
+      "path": "rabbitmq.client/7.2.0",
+      "hashPath": "rabbitmq.client.7.2.0.nupkg.sha512"
+    },
     "StackExchange.Redis/2.8.16": {
       "type": "package",
       "serviceable": true,
@@ -419,12 +569,12 @@
       "path": "stackexchange.redis/2.8.16",
       "hashPath": "stackexchange.redis.2.8.16.nupkg.sha512"
     },
-    "System.IO.Pipelines/5.0.1": {
+    "System.IO.Pipelines/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
-      "path": "system.io.pipelines/5.0.1",
-      "hashPath": "system.io.pipelines.5.0.1.nupkg.sha512"
+      "sha512": "sha512-FHNOatmUq0sqJOkTx+UF/9YK1f180cnW5FVqnQMvYUN0elp6wFzbtPSiqbo1/ru8ICp43JM1i7kKkk6GsNGHlA==",
+      "path": "system.io.pipelines/8.0.0",
+      "hashPath": "system.io.pipelines.8.0.0.nupkg.sha512"
     },
     "System.Text.Json/9.0.0": {
       "type": "package",
@@ -433,12 +583,29 @@
       "path": "system.text.json/9.0.0",
       "hashPath": "system.text.json.9.0.0.nupkg.sha512"
     },
+    "System.Threading.RateLimiting/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7mu9v0QDv66ar3DpGSZHg9NuNcxDaaAcnMULuZlaTpP9+hwXhrxNGsF5GmLkSHxFdb5bBc1TzeujsRgTrPWi+Q==",
+      "path": "system.threading.ratelimiting/8.0.0",
+      "hashPath": "system.threading.ratelimiting.8.0.0.nupkg.sha512"
+    },
     "BasketService.Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "BasketService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OrderService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

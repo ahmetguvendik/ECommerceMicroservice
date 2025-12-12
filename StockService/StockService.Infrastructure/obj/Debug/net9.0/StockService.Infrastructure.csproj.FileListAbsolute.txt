@@ -20,3 +20,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Infrastructure/obj/Debug/net9.0/StockService.Infrastructure.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Infrastructure/obj/Debug/net9.0/StockService.Infrastructure.genruntimeconfig.cache
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Infrastructure/obj/Debug/net9.0/ref/StockService.Infrastructure.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Infrastructure/bin/Debug/net9.0/OrderService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Infrastructure/bin/Debug/net9.0/OrderService.Domain.pdb

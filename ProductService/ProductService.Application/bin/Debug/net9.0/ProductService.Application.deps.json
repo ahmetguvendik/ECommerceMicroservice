@@ -137,6 +137,14 @@
           }
         }
       },
+      "OrderService.Domain/1.0.0": {
+        "runtime": {
+          "OrderService.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "ProductService.Domain/1.0.0": {
         "runtime": {
           "ProductService.Domain.dll": {
@@ -146,6 +154,9 @@
         }
       },
       "Shared/1.0.0": {
+        "dependencies": {
+          "OrderService.Domain": "1.0.0"
+        },
         "runtime": {
           "Shared.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -244,6 +255,11 @@
       "sha512": "sha512-lKIZiBiGd36k02TCdMHp1KlNWisyIvQxcYJvIkz7P4gSQ9zi8dgh6S5Grj8NNG7HWYIPfQymGyoZ6JB5d1Lo1g==",
       "path": "microsoft.identitymodel.tokens/8.14.0",
       "hashPath": "microsoft.identitymodel.tokens.8.14.0.nupkg.sha512"
+    },
+    "OrderService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "ProductService.Domain/1.0.0": {
       "type": "project",

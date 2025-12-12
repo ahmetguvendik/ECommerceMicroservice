@@ -44,13 +44,27 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "MassTransit.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0-develop.28, )"
+            },
             "MassTransit.RabbitMQ": {
               "target": "Package",
               "version": "[9.0.0-develop.27, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.11, )"
+            },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
               "version": "[9.0.9, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             }
           },
           "imports": [

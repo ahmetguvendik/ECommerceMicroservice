@@ -16,3 +16,5 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Application/obj/Debug/net9.0/refint/StockService.Application.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Application/obj/Debug/net9.0/StockService.Application.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Application/obj/Debug/net9.0/ref/StockService.Application.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Application/bin/Debug/net9.0/OrderService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Application/bin/Debug/net9.0/OrderService.Domain.pdb
