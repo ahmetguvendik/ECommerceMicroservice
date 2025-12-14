@@ -4,7 +4,7 @@ using SagaStateMachine.Service.StateMaps;
 
 namespace SagaStateMachine.Service.StateDbContexts;
 
-public class OrderStateDbContext : SagaDbContext
+public class  OrderStateDbContext : SagaDbContext
 {
     public OrderStateDbContext(DbContextOptions options) : base(options)
     {

@@ -65,10 +65,10 @@
           }
         }
       },
-      "MassTransit/9.0.0-develop.27": {
+      "MassTransit/9.0.0-develop.28": {
         "type": "package",
         "dependencies": {
-          "MassTransit.Abstractions": "9.0.0-develop.27",
+          "MassTransit.Abstractions": "9.0.0-develop.28",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
@@ -1395,6 +1395,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
+          "MassTransit": "9.0.0-develop.28",
           "OrderService.Domain": "1.0.0"
         },
         "compile": {
@@ -1476,10 +1477,10 @@
         "logo.png"
       ]
     },
-    "MassTransit/9.0.0-develop.27": {
-      "sha512": "fiMkB4Zd0AG5C99Pg6vwPyY9NSF0WoqMeHv8aD3MeVMWoIRLtJZY/+vw+PeE8mRxvJcHUfoaoN1BOg9/SIADWw==",
+    "MassTransit/9.0.0-develop.28": {
+      "sha512": "2G4rOooEuvmyW+2oUP6v7fRn/3tQg7IWb9Ic92gfLjAQdMYm32oXl2DdZYhel0GFJpkFv1eJ+qXh88LMS75rHA==",
       "type": "package",
-      "path": "masstransit/9.0.0-develop.27",
+      "path": "masstransit/9.0.0-develop.28",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1494,7 +1495,7 @@
         "lib/net9.0/MassTransit.xml",
         "lib/netstandard2.0/MassTransit.dll",
         "lib/netstandard2.0/MassTransit.xml",
-        "masstransit.9.0.0-develop.27.nupkg.sha512",
+        "masstransit.9.0.0-develop.28.nupkg.sha512",
         "masstransit.nuspec",
         "mt-logo-small.png"
       ]
@@ -4176,5 +4177,16 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: MassTransit.Abstractions from 9.0.0-develop.28 to 9.0.0-develop.27. Reference the package directly from the project to select a different version. \n OrderService.WebApi -> OrderService.Application -> Shared -> MassTransit 9.0.0-develop.28 -> MassTransit.Abstractions (>= 9.0.0-develop.28) \n OrderService.WebApi -> OrderService.Application -> MassTransit.Abstractions (>= 9.0.0-develop.27)",
+      "libraryId": "MassTransit.Abstractions",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

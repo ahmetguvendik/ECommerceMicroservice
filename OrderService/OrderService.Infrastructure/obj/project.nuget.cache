@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kDq8jFZ+9/E=",
+  "dgSpecHash": "hobDU904KDQ=",
   "success": true,
   "projectFilePath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Infrastructure/OrderService.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -8,8 +8,8 @@
     "/Users/ahmetguvendik/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.11.0/fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
-    "/Users/ahmetguvendik/.nuget/packages/masstransit/9.0.0-develop.27/masstransit.9.0.0-develop.27.nupkg.sha512",
-    "/Users/ahmetguvendik/.nuget/packages/masstransit.abstractions/9.0.0-develop.27/masstransit.abstractions.9.0.0-develop.27.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/masstransit/9.0.0-develop.28/masstransit.9.0.0-develop.28.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/masstransit.abstractions/9.0.0-develop.28/masstransit.abstractions.9.0.0-develop.28.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/masstransit.rabbitmq/9.0.0-develop.27/masstransit.rabbitmq.9.0.0-develop.27.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr/13.1.0/mediatr.13.1.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",

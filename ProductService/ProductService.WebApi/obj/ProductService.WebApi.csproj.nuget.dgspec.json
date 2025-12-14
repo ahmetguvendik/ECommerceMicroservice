@@ -414,6 +414,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[9.0.0-develop.28, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

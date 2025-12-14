@@ -9,4 +9,5 @@ public class OrderStateInstance : SagaStateMachineInstance
     public Guid CustomerId { get; set; }
     public decimal TotalAmount { get; set; }
     public string CurrentState { get; set; }
-}
+    public DateTime CreatedDate { get; set; }
+}   

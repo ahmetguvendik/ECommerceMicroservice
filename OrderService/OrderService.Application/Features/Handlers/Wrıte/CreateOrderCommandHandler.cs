@@ -97,6 +97,4 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
             throw new ApplicationException($"An error occurred processing {nameof(CreateOrderCommand)}", e);
         }
     }
-
-
 }

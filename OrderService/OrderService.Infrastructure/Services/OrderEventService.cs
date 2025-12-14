@@ -6,6 +6,7 @@ using OrderService.Domain.Enums;
 using Shared.Events;
 using System;
 using System.Linq;
+using Shared.Events.Orders;
 
 namespace OrderService.Infrastructure.Services;
 

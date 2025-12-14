@@ -10,4 +10,8 @@
       <ProjectReference Include="..\OrderService\OrderService.Domain\OrderService.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MassTransit" Version="9.0.0-develop.28" />
+    </ItemGroup>
+
 </Project>

@@ -7,6 +7,7 @@ using BasketService.Application.Repositories;
 using BasketService.Domain.Entities;
 using System;
 using System.Linq;
+using Shared.Events.Orders;
 
 namespace BasketService.Application.Features.Handlers.BasketHandlers.Write;
 
@@ -45,7 +46,6 @@ public class CheckoutBasketCommandHandler : IRequestHandler<CheckoutBasketComman
         var orderId = Guid.NewGuid();
         var orderStartedEvent = new OrderStartedEvent
         {
-            CorrelationId = Guid.NewGuid(),
             OrderId = orderId,
             BasketId = basket.Id,
             CustomerId = basket.CustomerId,

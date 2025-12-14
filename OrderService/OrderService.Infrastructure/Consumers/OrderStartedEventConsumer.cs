@@ -1,6 +1,7 @@
 using MassTransit;
 using OrderService.Application.Services;
 using Shared.Events;
+using Shared.Events.Orders;
 
 namespace OrderService.Infrastructure.Consumers;
 

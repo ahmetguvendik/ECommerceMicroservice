@@ -20,8 +20,6 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     }
 
     private string GetKey(Guid id) => $"{_keyPrefix}{id}";
-    private string GetKey(string id) => $"{_keyPrefix}{id}";
-
     public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         // Redis'te tüm key'leri bulmak için pattern kullan

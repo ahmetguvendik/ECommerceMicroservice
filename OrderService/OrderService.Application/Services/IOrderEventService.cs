@@ -1,4 +1,5 @@
 using Shared.Events;
+using Shared.Events.Orders;
 
 namespace OrderService.Application.Services;
 
