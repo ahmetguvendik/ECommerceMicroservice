@@ -1517,6 +1517,30 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "OrderService.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/OrderService.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OrderService.Domain.dll": {}
+        }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "MassTransit": "9.0.0-develop.28",
+          "OrderService.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
       }
     }
   },
@@ -4163,6 +4187,16 @@
         "system.threading.ratelimiting.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "OrderService.Domain/1.0.0": {
+      "type": "project",
+      "path": "../OrderService/OrderService.Domain/OrderService.Domain.csproj",
+      "msbuildProject": "../OrderService/OrderService.Domain/OrderService.Domain.csproj"
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4171,7 +4205,8 @@
       "MassTransit.RabbitMQ >= 9.0.0-develop.27",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.11",
       "Microsoft.Extensions.Hosting >= 9.0.9",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
+      "Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4198,7 +4233,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj": {
+              "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

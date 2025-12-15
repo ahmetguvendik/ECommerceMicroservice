@@ -6,6 +6,10 @@ namespace Shared.Events;
 
 public class OrderCreatedEvent : CorrelatedBy<Guid>
 {
+    public OrderCreatedEvent(Guid correlationId)
+    {
+        CorrelationId = correlationId;
+    }
     public Guid OrderId { get; set; }
     public Guid CustomerId { get; set; }
     public decimal TotalPrice { get; set; }

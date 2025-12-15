@@ -68,7 +68,8 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
 
             await _unitOfWork.CommitTransactionAsync(cancellationToken);
 
-            var orderCreatedEvent = new OrderCreatedEvent
+            var correlationId = request.CorrelationId != Guid.Empty ? request.CorrelationId : Guid.NewGuid();
+            var orderCreatedEvent = new OrderCreatedEvent(correlationId)
             {
                 OrderId = order.Id,
                 CustomerId = order.CustomerId,
