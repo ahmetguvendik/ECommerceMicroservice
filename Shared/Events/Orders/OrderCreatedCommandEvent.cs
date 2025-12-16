@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Shared.Messages;
 
-namespace Shared.Messages;
+namespace Shared.Events.Orders;
 
-public class CreateOrderCommandMessage
+public class OrderCreatedCommandEvent
 {
     public Guid CorrelationId { get; set; }
     public Guid OrderId { get; set; }

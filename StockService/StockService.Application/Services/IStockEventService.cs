@@ -1,6 +1,8 @@
+using Shared.Messages;
+
 namespace StockService.Application.Services;
 
-public class IStockEventService
+public interface IStockEventService
 {
-    
+    Task HandleStockRollbackMessage(StockRollbackMessage message, CancellationToken cancellationToken);
 }

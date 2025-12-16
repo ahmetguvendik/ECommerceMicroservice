@@ -1,10 +1,10 @@
-using System;
 using MassTransit;
 using SagaStateMachine.Service.StateInstances;
 using Shared;
 using Shared.Events;
 using Shared.Events.Orders;
 using Shared.Events.Payments;
+using Shared.Events.Deliveries;
 using Shared.Events.Stocks;
 using Shared.Messages;
 using System.Collections.Generic;
@@ -20,6 +20,8 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
     public Event<PaymentCompletedEvent>  PaymentCompletedEvent { get; set; }
     public Event<PaymentFailedEvent>  PaymentFailedEvent { get; set; }
     public Event<StockNotReservedEvent> StockNotReservedEvent { get; set; }
+    public Event<DeliveryCompletedEvent> DeliveryCompletedEvent { get; set; }
+    public Event<DeliveryFailedEvent> DeliveryFailedEvent { get; set; }
     
     //State
     public State OrderCreated { get; set; }
@@ -27,9 +29,13 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
     public State PaymentCompleted { get; set; }
     public State PaymentFailed { get; set; }
     public State StockNotReserved { get; set; }
+    public State DeliveryStarted { get; set; }
+    public State DeliveryCompleted { get; set; }
+    public State DeliveryFailed { get; set; }
     public OrderStateMachine()
     {
         InstanceState(x => x.CurrentState);
+        SetCompletedWhenFinalized();
         
         //Events
         Event(() => OrderStartedEvent,
@@ -39,6 +45,8 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
         Event(() => StockNotReservedEvent, x => x.CorrelateById(@event => @event.Message.CorrelationId));
         Event(() => PaymentCompletedEvent, x => x.CorrelateById(@event => @event.Message.CorrelationId));
         Event(() => PaymentFailedEvent  , x => x.CorrelateById(@event => @event.Message.CorrelationId));
+        Event(() => DeliveryCompletedEvent, x => x.CorrelateById(@event => @event.Message.CorrelationId));
+        Event(() => DeliveryFailedEvent  , x => x.CorrelateById(@event => @event.Message.CorrelationId));
 
         //States
         Initially(When(OrderStartedEvent).Then<OrderStateInstance, OrderStartedEvent>(context =>
@@ -49,8 +57,9 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
             context.Instance.TotalAmount = context.Message.TotalAmount;
             context.Instance.CreatedDate = DateTime.UtcNow;
         }).TransitionTo(OrderCreated)
-        .Send(new Uri($"queue:{RabbitMqSettings.Order_CreateOrderCommandQueue}"),
-            context => new CreateOrderCommandMessage()
+                .Send(new Uri($"queue:{RabbitMqSettings.Order_CreateOrderCommandQueue}"),
+            context => new OrderCreatedCommandEvent
+                ()
             {
                 CorrelationId = context.Instance.CorrelationId,
                 OrderId = context.Instance.OrderId,
@@ -66,8 +75,71 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
                     context.Instance.OrderId = context.Message.OrderId;
                     context.Instance.TotalAmount = context.Message.TotalPrice;
                 })
-                .Send(new Uri($"queue:{RabbitMqSettings.Stock_OrderCreatedEventQueue}"), context => context.Message));
+                .Send(new Uri($"queue:{RabbitMqSettings.Stock_OrderCreatedEventQueue}"), context => context.Message),
 
+            When(StockReservedEvent)
+                .Then(ctx =>
+                {
+                    ctx.Instance.TotalAmount = ctx.Instance.TotalAmount; // keep total for payment
+                })
+                .Send(new Uri($"queue:{RabbitMqSettings.Payment_StartedEvenetQueue}"),
+                    ctx => new PaymentStartedEvent(ctx.Instance.CorrelationId)
+                    {
+                        TotalPrice = ctx.Instance.TotalAmount,
+                        OrderItemMessages = ctx.Data.OrderItemMessages
+                    })
+                .TransitionTo(StockReserved),
 
+            When(StockNotReservedEvent)
+                .Publish(ctx => new OrderFailedEvent
+                {
+                    OrderId = ctx.Instance.OrderId,
+                    Message = ctx.Data.Message
+                })
+                .Finalize());
+
+        During(StockReserved,
+            When(PaymentCompletedEvent)
+                .Send(new Uri($"queue:{RabbitMqSettings.Delivery_StartedEventQueue}"),
+                    ctx => new DeliveryStartedEvent(ctx.Instance.CorrelationId)
+                    {
+                        OrderId = ctx.Instance.OrderId,
+                        OrderItemMessages = new List<OrderItemMessage>()
+                    })
+                .TransitionTo(DeliveryStarted),
+
+            When(PaymentFailedEvent)
+                .Publish(ctx => new OrderFailedEvent
+                {
+                    OrderId = ctx.Instance.OrderId,
+                    Message = ctx.Data.Message
+                })
+                .Send(new Uri($"queue:{RabbitMqSettings.Stock_RollbackMessageEventQueue}"),
+                    ctx => new StockRollbackMessage
+                    {
+                        OrderItemMessages = new List<OrderItemMessage>()
+                    })
+                .Finalize());
+
+        During(DeliveryStarted,
+            When(DeliveryCompletedEvent)
+                .Publish(ctx => new OrderCompletedEvent
+                {
+                    OrderId = ctx.Instance.OrderId
+                })
+                .Finalize(),
+
+            When(DeliveryFailedEvent)
+                .Publish(ctx => new OrderFailedEvent
+                {
+                    OrderId = ctx.Instance.OrderId,
+                    Message = ctx.Data.Message
+                })
+                .Send(new Uri($"queue:{RabbitMqSettings.Stock_RollbackMessageEventQueue}"),
+                    ctx => new StockRollbackMessage
+                    {
+                        OrderItemMessages = new List<OrderItemMessage>()
+                    })
+                .Finalize());
     }
 }

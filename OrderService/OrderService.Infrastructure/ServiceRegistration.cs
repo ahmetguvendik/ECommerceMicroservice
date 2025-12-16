@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OrderService.Application.Repositories;
+using OrderService.Application.Services;
 using OrderService.Application.UnitOfWorks;
 using OrderService.Infrastructure.Contexts;
 using OrderService.Infrastructure.Consumers;
 using OrderService.Infrastructure.Repositories;
+using OrderService.Infrastructure.Services;
 using OrderService.Infrastructure.UnitOfWorks;
 using Shared;
 
@@ -23,6 +25,9 @@ public static class ServiceRegistration
         //Repositories
         collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));        
         collection.AddScoped<IUnitOfWork, UnitOfWork>();
+        
+        //Services
+        collection.AddScoped<IOrderEventService, OrderEventService>();
         
         //Mass Transit (Rabbitmq)
         collection.AddMassTransit(cfg =>

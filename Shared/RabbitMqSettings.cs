@@ -14,5 +14,6 @@ public static class RabbitMqSettings
     public const string Order_OrderFailedEventQueue = "order-order-failed-event-queue";
     public const string Stock_RollbackMessageEventQueue = "stock-rollback-message-event-queue";
     public const string Payment_StartedEvenetQueue = "payment-started-event-queue";
+    public const string Delivery_StartedEventQueue = "delivery-started-event-queue";
     
 }

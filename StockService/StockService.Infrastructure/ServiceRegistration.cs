@@ -29,6 +29,8 @@ public static class ServiceRegistration
         //Application Services
         collection.AddScoped<IProductEventService, ProductEventService>();
         collection.AddScoped<IOrderEventService, OrderEventService>();
+        collection.AddScoped<IStockEventService, StockEventService>();
+
         
         //Mass Transit (Rabbitmq)
         collection.AddMassTransit(c =>

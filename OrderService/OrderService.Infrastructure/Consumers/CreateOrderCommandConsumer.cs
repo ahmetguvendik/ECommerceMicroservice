@@ -1,46 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using MassTransit;
-using MediatR;
-using OrderService.Application.Features.Commands;
-using OrderService.Domain.Entities;
-using Shared.Messages;
+using OrderService.Application.Services;
+using Shared.Events.Orders;
 
 namespace OrderService.Infrastructure.Consumers;
 
-public class CreateOrderCommandConsumer : IConsumer<CreateOrderCommandMessage>
+public class CreateOrderCommandConsumer : IConsumer<OrderCreatedCommandEvent>
 {
-    private readonly IMediator _mediator;
+    private readonly IOrderEventService _orderEventService;
 
-    public CreateOrderCommandConsumer(IMediator mediator)
+    public CreateOrderCommandConsumer(IOrderEventService orderEventService)
     {
-        _mediator = mediator;
+        _orderEventService = orderEventService;
     }
 
-    public async Task Consume(ConsumeContext<CreateOrderCommandMessage> context)
+    public async Task Consume(ConsumeContext<OrderCreatedCommandEvent> context)
     {
-        var payload = context.Message;
-        var orderId = payload.OrderId != Guid.Empty ? payload.OrderId : Guid.NewGuid();
-
-        var command = new CreateOrderCommand
-        {
-            CorrelationId = payload.CorrelationId,
-            OrderId = orderId,
-            CustomerId = payload.CustomerId,
-            TotalAmount = payload.TotalAmount,
-            OrderItemList = (payload.Items ?? new List<OrderItemMessage>()).Select(item => new OrderItem
-            {
-                Id = Guid.NewGuid(),
-                OrderId = orderId,
-                ProductId = item.ProductId,
-                ProductName = item.ProductName,
-                Quantity = item.Quantity,
-                UnitPrice = item.UnitPrice
-            }).ToList()
-        };
-
-        await _mediator.Send(command, context.CancellationToken);
+        var @event = context.Message;
+        await _orderEventService.HandlerOrderCreatedCommandAsync(@event, context.CancellationToken);
     }
 }
 
