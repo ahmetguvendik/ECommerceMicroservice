@@ -28,6 +28,7 @@ public static class ServiceRegistration
         
         //Application Services
         collection.AddScoped<IProductEventService, ProductEventService>();
+        collection.AddScoped<IOrderEventService, OrderEventService>();
         
         //Mass Transit (Rabbitmq)
         collection.AddMassTransit(c =>
@@ -36,6 +37,7 @@ public static class ServiceRegistration
             c.AddConsumer<ProductCreatedEventConsumer>();
             c.AddConsumer<ProductUpdatedEventConsumer>();
             c.AddConsumer<ProductDeletedEventConsumer>();
+            c.AddConsumer<OrderCreatedEventConsumer>();
             
             c.UsingRabbitMq((context, cfg) =>
             {
@@ -56,6 +58,11 @@ public static class ServiceRegistration
                 cfg.ReceiveEndpoint(RabbitMqSettings.Stock_ProductDeletedEventQueue, e =>
                 {
                     e.ConfigureConsumer<ProductDeletedEventConsumer>(context);
+                });
+
+                cfg.ReceiveEndpoint(RabbitMqSettings.Stock_OrderCreatedEventQueue, e =>
+                {
+                    e.ConfigureConsumer<OrderCreatedEventConsumer>(context);
                 });
             });
         }); 

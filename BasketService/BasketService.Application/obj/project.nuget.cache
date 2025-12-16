@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "eRXLNm7IOgE=",
-  "success": false,
+  "dgSpecHash": "sDlyHB9MQD0=",
+  "success": true,
   "projectFilePath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/BasketService.Application.csproj",
   "expectedPackageFiles": [
     "/Users/ahmetguvendik/.nuget/packages/fluentvalidation/12.1.1/fluentvalidation.12.1.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.11.0/fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/masstransit/9.0.0-develop.28/masstransit.9.0.0-develop.28.nupkg.sha512",
-    "/Users/ahmetguvendik/.nuget/packages/masstransit.abstractions/9.0.0-develop.27/masstransit.abstractions.9.0.0-develop.27.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/masstransit.abstractions/9.0.0-develop.28/masstransit.abstractions.9.0.0-develop.28.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr/13.1.0/mediatr.13.1.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.0/microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
@@ -26,17 +26,5 @@
     "/Users/ahmetguvendik/.nuget/packages/microsoft.identitymodel.logging/8.14.0/microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/microsoft.identitymodel.tokens.8.14.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Warning As Error: Detected package downgrade: MassTransit.Abstractions from 9.0.0-develop.28 to 9.0.0-develop.27. Reference the package directly from the project to select a different version. \n BasketService.Application -> Shared -> MassTransit 9.0.0-develop.28 -> MassTransit.Abstractions (>= 9.0.0-develop.28) \n BasketService.Application -> MassTransit.Abstractions (>= 9.0.0-develop.27)",
-      "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/BasketService.Application.csproj",
-      "filePath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Application/BasketService.Application.csproj",
-      "libraryId": "MassTransit.Abstractions",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  "logs": []
 }

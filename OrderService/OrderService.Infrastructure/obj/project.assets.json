@@ -1240,7 +1240,7 @@
         "dependencies": {
           "FluentValidation": "12.1.1",
           "FluentValidation.AspNetCore": "11.3.1",
-          "MassTransit.Abstractions": "9.0.0-develop.27",
+          "MassTransit.Abstractions": "9.0.0-develop.28",
           "MediatR": "13.1.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "OrderService.Domain": "1.0.0",

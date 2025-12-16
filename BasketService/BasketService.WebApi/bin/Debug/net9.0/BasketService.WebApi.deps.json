@@ -58,9 +58,9 @@
           }
         }
       },
-      "MassTransit/9.0.0-develop.27": {
+      "MassTransit/9.0.0-develop.28": {
         "dependencies": {
-          "MassTransit.Abstractions": "9.0.0-develop.27",
+          "MassTransit.Abstractions": "9.0.0-develop.28",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
@@ -74,7 +74,7 @@
           }
         }
       },
-      "MassTransit.Abstractions/9.0.0-develop.27": {
+      "MassTransit.Abstractions/9.0.0-develop.28": {
         "runtime": {
           "lib/net9.0/MassTransit.Abstractions.dll": {
             "assemblyVersion": "9.0.0.0",
@@ -84,7 +84,7 @@
       },
       "MassTransit.RabbitMQ/9.0.0-develop.27": {
         "dependencies": {
-          "MassTransit": "9.0.0-develop.27",
+          "MassTransit": "9.0.0-develop.28",
           "RabbitMQ.Client": "7.2.0"
         },
         "runtime": {
@@ -872,7 +872,7 @@
           "BasketService.Domain": "1.0.0",
           "FluentValidation": "12.1.1",
           "FluentValidation.AspNetCore": "11.3.1",
-          "MassTransit.Abstractions": "9.0.0-develop.27",
+          "MassTransit.Abstractions": "9.0.0-develop.28",
           "MediatR": "13.1.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "Shared": "1.0.0"
@@ -919,6 +919,7 @@
       },
       "Shared/1.0.0": {
         "dependencies": {
+          "MassTransit": "9.0.0-develop.28",
           "OrderService.Domain": "1.0.0"
         },
         "runtime": {
@@ -964,19 +965,19 @@
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
     },
-    "MassTransit/9.0.0-develop.27": {
+    "MassTransit/9.0.0-develop.28": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fiMkB4Zd0AG5C99Pg6vwPyY9NSF0WoqMeHv8aD3MeVMWoIRLtJZY/+vw+PeE8mRxvJcHUfoaoN1BOg9/SIADWw==",
-      "path": "masstransit/9.0.0-develop.27",
-      "hashPath": "masstransit.9.0.0-develop.27.nupkg.sha512"
+      "sha512": "sha512-2G4rOooEuvmyW+2oUP6v7fRn/3tQg7IWb9Ic92gfLjAQdMYm32oXl2DdZYhel0GFJpkFv1eJ+qXh88LMS75rHA==",
+      "path": "masstransit/9.0.0-develop.28",
+      "hashPath": "masstransit.9.0.0-develop.28.nupkg.sha512"
     },
-    "MassTransit.Abstractions/9.0.0-develop.27": {
+    "MassTransit.Abstractions/9.0.0-develop.28": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-uMnz5s3xviSybj3iboEG7B6yZMdHQv6l4TtdHrrIPGPbRL2npcHX17s5aE9SDyWHRP460V0lCNyD+1xHUjV+Sg==",
-      "path": "masstransit.abstractions/9.0.0-develop.27",
-      "hashPath": "masstransit.abstractions.9.0.0-develop.27.nupkg.sha512"
+      "sha512": "sha512-a2vgEzDhMrXlTBygm70zAUzJQ4DABjuEYg31CIj0KV8354fPCxLuVCSXIwYI23mYjYsJEP0710HDh0pODiO6/Q==",
+      "path": "masstransit.abstractions/9.0.0-develop.28",
+      "hashPath": "masstransit.abstractions.9.0.0-develop.28.nupkg.sha512"
     },
     "MassTransit.RabbitMQ/9.0.0-develop.27": {
       "type": "package",

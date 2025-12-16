@@ -47,7 +47,7 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
             context.Instance.OrderId = context.Message.OrderId;
             context.Instance.CustomerId = context.Message.CustomerId;
             context.Instance.TotalAmount = context.Message.TotalAmount;
-            context.Instance.CreatedDate = DateTime.Now;
+            context.Instance.CreatedDate = DateTime.UtcNow;
         }).TransitionTo(OrderCreated)
         .Send(new Uri($"queue:{RabbitMqSettings.Order_CreateOrderCommandQueue}"),
             context => new CreateOrderCommandMessage()
