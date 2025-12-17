@@ -11,7 +11,7 @@ public class PaymentStartedEvent : CorrelatedBy<Guid>
     {
         CorrelationId = correlationId;
     }
-
+    public Guid OrderId { get; set; }
     public decimal TotalPrice { get; set; }
     public List<OrderItemMessage> OrderItemMessages { get; set; }   
 }

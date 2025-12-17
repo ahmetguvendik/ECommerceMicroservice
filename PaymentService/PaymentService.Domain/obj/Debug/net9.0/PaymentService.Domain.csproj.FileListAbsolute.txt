@@ -1,0 +1,12 @@
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/bin/Debug/net9.0/PaymentService.Domain.deps.json
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/bin/Debug/net9.0/PaymentService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/bin/Debug/net9.0/PaymentService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/PaymentService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/PaymentService.Domain.AssemblyInfoInputs.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/PaymentService.Domain.AssemblyInfo.cs
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/PaymentService.Domain.csproj.CoreCompileInputs.cache
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/PaymentService.Domain.sourcelink.json
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/PaymentService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/refint/PaymentService.Domain.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/PaymentService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/PaymentService/PaymentService.Domain/obj/Debug/net9.0/ref/PaymentService.Domain.dll

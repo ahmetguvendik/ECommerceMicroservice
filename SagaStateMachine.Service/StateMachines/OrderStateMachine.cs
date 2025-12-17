@@ -85,6 +85,7 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
                 .Send(new Uri($"queue:{RabbitMqSettings.Payment_StartedEvenetQueue}"),
                     ctx => new PaymentStartedEvent(ctx.Instance.CorrelationId)
                     {
+                        OrderId = ctx.Instance.OrderId,
                         TotalPrice = ctx.Instance.TotalAmount,
                         OrderItemMessages = ctx.Data.OrderItemMessages
                     })

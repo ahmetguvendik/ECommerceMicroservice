@@ -58,6 +58,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.WebApi", "PaymentService\PaymentService.WebApi\PaymentService.WebApi.csproj", "{8BDC1BFA-6103-4DC9-80AF-94CF6BC1A9C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Domain", "DeliveryService\DeliveryService.Domain\DeliveryService.Domain.csproj", "{A2F72D68-1B7A-4B9C-9FF3-4B7B3561E5B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Application", "DeliveryService\DeliveryService.Application\DeliveryService.Application.csproj", "{D1E67E4D-5CBE-4F3D-9E2A-3C7E2E6BD123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Infrastructure", "DeliveryService\DeliveryService.Infrastructure\DeliveryService.Infrastructure.csproj", "{C3B1A6F4-7E12-4A9E-A1D1-1F2E6F921234}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.WebApi", "DeliveryService\DeliveryService.WebApi\DeliveryService.WebApi.csproj", "{E4C2D7AA-5F5C-4D1E-9A11-9A6D4F125678}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +100,10 @@ Global
 		{3A14D4F1-AD07-4B3A-95BB-244B059D9FCF} = {EB61E2F0-78EC-4F54-B89F-352C5378DDB6}
 		{C56E9ED2-18FD-4746-860F-BA865B070FFB} = {EB61E2F0-78EC-4F54-B89F-352C5378DDB6}
 		{8BDC1BFA-6103-4DC9-80AF-94CF6BC1A9C9} = {EB61E2F0-78EC-4F54-B89F-352C5378DDB6}
+		{A2F72D68-1B7A-4B9C-9FF3-4B7B3561E5B2} = {7BA5C571-0ECE-43DF-AD6C-F38048300067}
+		{D1E67E4D-5CBE-4F3D-9E2A-3C7E2E6BD123} = {7BA5C571-0ECE-43DF-AD6C-F38048300067}
+		{C3B1A6F4-7E12-4A9E-A1D1-1F2E6F921234} = {7BA5C571-0ECE-43DF-AD6C-F38048300067}
+		{E4C2D7AA-5F5C-4D1E-9A11-9A6D4F125678} = {7BA5C571-0ECE-43DF-AD6C-F38048300067}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BD744252-3639-4D7D-A638-293995A16AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -182,5 +194,21 @@ Global
 		{8BDC1BFA-6103-4DC9-80AF-94CF6BC1A9C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BDC1BFA-6103-4DC9-80AF-94CF6BC1A9C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BDC1BFA-6103-4DC9-80AF-94CF6BC1A9C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2F72D68-1B7A-4B9C-9FF3-4B7B3561E5B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2F72D68-1B7A-4B9C-9FF3-4B7B3561E5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2F72D68-1B7A-4B9C-9FF3-4B7B3561E5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2F72D68-1B7A-4B9C-9FF3-4B7B3561E5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E67E4D-5CBE-4F3D-9E2A-3C7E2E6BD123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E67E4D-5CBE-4F3D-9E2A-3C7E2E6BD123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E67E4D-5CBE-4F3D-9E2A-3C7E2E6BD123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E67E4D-5CBE-4F3D-9E2A-3C7E2E6BD123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B1A6F4-7E12-4A9E-A1D1-1F2E6F921234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B1A6F4-7E12-4A9E-A1D1-1F2E6F921234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B1A6F4-7E12-4A9E-A1D1-1F2E6F921234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B1A6F4-7E12-4A9E-A1D1-1F2E6F921234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4C2D7AA-5F5C-4D1E-9A11-9A6D4F125678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4C2D7AA-5F5C-4D1E-9A11-9A6D4F125678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4C2D7AA-5F5C-4D1E-9A11-9A6D4F125678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4C2D7AA-5F5C-4D1E-9A11-9A6D4F125678}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
