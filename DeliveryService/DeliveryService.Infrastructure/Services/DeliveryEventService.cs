@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DeliveryService.Application.Services;
 using DeliveryService.Domain.Entities;
 using DeliveryService.Domain.Enums;
@@ -60,7 +61,8 @@ public class DeliveryEventService : IDeliveryEventService
             await _publishEndpoint.Publish(new DeliveryFailedEvent(delivery.CorrelationId)
             {
                 OrderId = delivery.OrderId,
-                Message = ex.Message
+                Message = ex.Message,
+                OrderItemMessages = deliveryStartedEvent.OrderItemMessages ?? new List<Shared.Messages.OrderItemMessage>()
             }, cancellationToken);
 
             throw;

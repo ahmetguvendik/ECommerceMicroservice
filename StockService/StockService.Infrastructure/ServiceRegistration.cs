@@ -40,6 +40,7 @@ public static class ServiceRegistration
             c.AddConsumer<ProductUpdatedEventConsumer>();
             c.AddConsumer<ProductDeletedEventConsumer>();
             c.AddConsumer<OrderCreatedEventConsumer>();
+            c.AddConsumer<StockRollbackMessageConsumer>();
             
             c.UsingRabbitMq((context, cfg) =>
             {
@@ -65,6 +66,11 @@ public static class ServiceRegistration
                 cfg.ReceiveEndpoint(RabbitMqSettings.Stock_OrderCreatedEventQueue, e =>
                 {
                     e.ConfigureConsumer<OrderCreatedEventConsumer>(context);
+                });
+
+                cfg.ReceiveEndpoint(RabbitMqSettings.Stock_RollbackMessageEventQueue, e =>
+                {
+                    e.ConfigureConsumer<StockRollbackMessageConsumer>(context);
                 });
             });
         }); 

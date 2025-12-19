@@ -8,6 +8,7 @@ using Shared.Events.Deliveries;
 using Shared.Events.Stocks;
 using Shared.Messages;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SagaStateMachine.Service.StateMachines;
 
@@ -56,6 +57,7 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
             context.Instance.CustomerId = context.Message.CustomerId;
             context.Instance.TotalAmount = context.Message.TotalAmount;
             context.Instance.CreatedDate = DateTime.UtcNow;
+            context.Instance.OrderItemMessages = context.Data.Items ?? new List<OrderItemMessage>();
         }).TransitionTo(OrderCreated)
                 .Send(new Uri($"queue:{RabbitMqSettings.Order_CreateOrderCommandQueue}"),
             context => new OrderCreatedCommandEvent
@@ -74,6 +76,9 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
                 {
                     context.Instance.OrderId = context.Message.OrderId;
                     context.Instance.TotalAmount = context.Message.TotalPrice;
+                    context.Instance.OrderItemMessages = context.Instance.OrderItemMessages.Any()
+                        ? context.Instance.OrderItemMessages
+                        : context.Data.OrderItemMessages ?? new List<OrderItemMessage>();
                 })
                 .Send(new Uri($"queue:{RabbitMqSettings.Stock_OrderCreatedEventQueue}"), context => context.Message),
 
@@ -81,6 +86,7 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
                 .Then(ctx =>
                 {
                     ctx.Instance.TotalAmount = ctx.Instance.TotalAmount; // keep total for payment
+                    ctx.Instance.OrderItemMessages = ctx.Data.OrderItemMessages ?? ctx.Instance.OrderItemMessages;
                 })
                 .Send(new Uri($"queue:{RabbitMqSettings.Payment_StartedEvenetQueue}"),
                     ctx => new PaymentStartedEvent(ctx.Instance.CorrelationId)
@@ -105,7 +111,7 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
                     ctx => new DeliveryStartedEvent(ctx.Instance.CorrelationId)
                     {
                         OrderId = ctx.Instance.OrderId,
-                        OrderItemMessages = new List<OrderItemMessage>()
+                        OrderItemMessages = ctx.Instance.OrderItemMessages ?? new List<OrderItemMessage>()
                     })
                 .TransitionTo(DeliveryStarted),
 
@@ -118,7 +124,8 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
                 .Send(new Uri($"queue:{RabbitMqSettings.Stock_RollbackMessageEventQueue}"),
                     ctx => new StockRollbackMessage
                     {
-                        OrderItemMessages = new List<OrderItemMessage>()
+                        // Gönderilen stok item'larını iade kuyruğuna taşı
+                        OrderItemMessages = ctx.Data.OrderItemMessages ?? new List<OrderItemMessage>()
                     })
                 .Finalize());
 
@@ -139,7 +146,7 @@ public class OrderStateMachine : MassTransitStateMachine<OrderStateInstance>
                 .Send(new Uri($"queue:{RabbitMqSettings.Stock_RollbackMessageEventQueue}"),
                     ctx => new StockRollbackMessage
                     {
-                        OrderItemMessages = new List<OrderItemMessage>()
+                        OrderItemMessages = ctx.Data.OrderItemMessages ?? ctx.Instance.OrderItemMessages ?? new List<OrderItemMessage>()
                     })
                 .Finalize());
     }
