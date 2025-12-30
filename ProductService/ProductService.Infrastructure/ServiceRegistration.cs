@@ -19,7 +19,7 @@ public static class ServiceRegistration
             opt.UseNpgsql(connectionString));
         
         //Repositories
-        collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));        
+        collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         collection.AddTransient<IUnitOfWork, UnitOfWork>();
         
         //Mass Trabsit (Rabbitmq)

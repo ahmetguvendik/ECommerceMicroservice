@@ -1,3 +1,4 @@
+using System.Text.Json;
 using MassTransit;
 using MediatR;
 using ProductService.Application.Features.Commands.ProductCommands;
@@ -10,17 +11,20 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
 {
     private readonly IGenericRepository<Product> _productRepository;
     private readonly IGenericRepository<ProductCategory> _productCategoryRepository;
+    private readonly IGenericRepository<ProductOutbox> _productOutboxRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IPublishEndpoint _publishEndpoint;
 
     public CreateProductCommandHandler(
         IGenericRepository<Product> productRepository,
         IGenericRepository<ProductCategory> productCategoryRepository,
+        IGenericRepository<ProductOutbox> productOutboxRepository,
         IUnitOfWork unitOfWork,
         IPublishEndpoint publishEndpoint)
     {
         _productRepository = productRepository;
         _productCategoryRepository = productCategoryRepository;
+        _productOutboxRepository = productOutboxRepository;
         _unitOfWork = unitOfWork;
         _publishEndpoint = publishEndpoint;
     }
@@ -48,7 +52,6 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
             };
 
             await _productRepository.CreateAsync(product, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             // EVENT
             var productCreatedEvent = new ProductCreatedEvent
@@ -58,9 +61,28 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
                 Sku = product.Sku,
                 Name = product.Name
             };
+            
+            #region Outbox Olmadan Direkt Event Gonderme
+            //await _publishEndpoint.Publish(productCreatedEvent, cancellationToken);
+            //await _unitOfWork.CommitTransactionAsync(cancellationToken);
+            #endregion
+            
+            #region Outbox Ile Islemler
 
-            await _publishEndpoint.Publish(productCreatedEvent, cancellationToken);
+            var productOutbox = new ProductOutbox
+            {
+                Id = Guid.NewGuid(),
+                OccuredOn = DateTime.UtcNow,
+                ProcessedDate = null,
+                Type = nameof(ProductCreatedEvent),
+                Payload = JsonSerializer.Serialize(productCreatedEvent)
+            };
 
+            await _productOutboxRepository.CreateAsync(productOutbox, cancellationToken);
+            
+            #endregion
+
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
             await _unitOfWork.CommitTransactionAsync(cancellationToken);
         }
         catch

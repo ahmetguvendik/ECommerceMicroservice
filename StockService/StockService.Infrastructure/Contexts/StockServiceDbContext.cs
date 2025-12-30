@@ -9,6 +9,7 @@ public class StockServiceDbContext : DbContext
     {
         
     }
-
+    
     public DbSet<Stock> Stocks { get; set; }
+    public DbSet<StockInbox> StockInboxes { get; set; }
 }

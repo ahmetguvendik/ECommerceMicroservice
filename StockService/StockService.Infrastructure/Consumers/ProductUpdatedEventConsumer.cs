@@ -16,6 +16,7 @@ public class ProductUpdatedEventConsumer : IConsumer<ProductUpdatedEvent>
     {
         var @event = context.Message;
         // Application katmanındaki service'e yönlendir
-        await _productEventService.HandleProductUpdatedAsync(@event, context.CancellationToken);
+        var messageId = context.MessageId ?? Guid.NewGuid();
+        await _productEventService.HandleProductUpdatedAsync(@event, messageId, context.CancellationToken);
     }
 }

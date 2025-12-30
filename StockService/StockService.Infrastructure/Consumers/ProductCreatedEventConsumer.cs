@@ -16,7 +16,8 @@ public class ProductCreatedEventConsumer : IConsumer<ProductCreatedEvent>
     public async Task Consume(ConsumeContext<ProductCreatedEvent> context)
     {
         var @event = context.Message;
-        // Application katmanındaki service'e yönlendir
-        await _productEventService.HandleProductCreatedAsync(@event, context.CancellationToken);
+        var messageId = context.MessageId ?? Guid.NewGuid();
+        // Application katmanındaki service'e yönlendir (inbox/idempotent)
+        await _productEventService.HandleProductCreatedAsync(@event, messageId, context.CancellationToken);
     }
 }

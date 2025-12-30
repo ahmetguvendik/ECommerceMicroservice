@@ -1,3 +1,4 @@
+using System.Text.Json;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Shared;
@@ -13,34 +14,64 @@ namespace StockService.Infrastructure.Services;
 public class ProductEventService : IProductEventService
 {
     private readonly IGenericRepository<Stock> _stockRepository;
+    private readonly IGenericRepository<StockInbox> _inboxRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly ISendEndpointProvider _sendEndpointProvider;
     
-    public ProductEventService(IGenericRepository<Stock> stockRepository, IUnitOfWork unitOfWork, ISendEndpointProvider sendEndpointProvider)
+    public ProductEventService(
+        IGenericRepository<Stock> stockRepository,
+        IGenericRepository<StockInbox> inboxRepository,
+        IUnitOfWork unitOfWork,
+        ISendEndpointProvider sendEndpointProvider)
     {
         _stockRepository = stockRepository;
+        _inboxRepository = inboxRepository;
         _unitOfWork = unitOfWork;
         _sendEndpointProvider = sendEndpointProvider;
  
     }
 
-    public async Task HandleProductCreatedAsync(ProductCreatedEvent productCreatedEvent, CancellationToken cancellationToken = default)
+    public async Task HandleProductCreatedAsync(ProductCreatedEvent productCreatedEvent, Guid? messageId = null, CancellationToken cancellationToken = default)
     {
 
         try
         {
+            var inboxId = messageId ?? Guid.NewGuid();
+            var existingInbox = await _inboxRepository.GetByIdAsync(inboxId, cancellationToken);
+            if (existingInbox != null && existingInbox.Processed)
+            {
+                return; // idempotent
+            }
+
+            await _unitOfWork.BeginTransactionAsync(cancellationToken);
+
             // Yeni ürün için stok kaydı oluştur
-            // Stock entity'sinde Id (kendi ID'si) ve ProductId (ürün ID'si) var
-            // ProductId ile arama yapmalıyız
             var existingStocks = await _stockRepository.GetAllAsync(s => s.ProductId == productCreatedEvent.ProdcutId, cancellationToken);
             var existingStock = existingStocks.FirstOrDefault();
             
             if (existingStock != null)
             {
+                // yine de inbox'ı processed işaretle
+                if (existingInbox == null)
+                {
+                    var inbox = new StockInbox
+                    {
+                        Id = inboxId,
+                        Processed = true,
+                        Payload = JsonSerializer.Serialize(productCreatedEvent)
+                    };
+                    await _inboxRepository.CreateAsync(inbox, cancellationToken);
+                }
+                else
+                {
+                    existingInbox.Processed = true;
+                    await _inboxRepository.UpdateAsync(existingInbox, cancellationToken);
+                }
+                
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
+                await _unitOfWork.CommitTransactionAsync(cancellationToken);
                 return;
             }
-
-            await _unitOfWork.BeginTransactionAsync(cancellationToken);
 
             var newStock = new Stock
             {
@@ -50,6 +81,23 @@ public class ProductEventService : IProductEventService
             };
 
             await _stockRepository.CreateAsync(newStock, cancellationToken);
+            
+            if (existingInbox == null)
+            {
+                var inbox = new StockInbox
+                {
+                    Id = inboxId,
+                    Processed = true,
+                    Payload = JsonSerializer.Serialize(productCreatedEvent)
+                };
+                await _inboxRepository.CreateAsync(inbox, cancellationToken);
+            }
+            else
+            {
+                existingInbox.Processed = true;
+                await _inboxRepository.UpdateAsync(existingInbox, cancellationToken);
+            }
+            
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             await _unitOfWork.CommitTransactionAsync(cancellationToken); 
 
@@ -68,7 +116,7 @@ public class ProductEventService : IProductEventService
         }
     }
 
-    public async Task HandleProductUpdatedAsync(ProductUpdatedEvent productUpdatedEvent, CancellationToken cancellationToken = default)
+    public async Task HandleProductUpdatedAsync(ProductUpdatedEvent productUpdatedEvent, Guid? messageId = null, CancellationToken cancellationToken = default)
     {
         try
         {
@@ -107,7 +155,7 @@ public class ProductEventService : IProductEventService
         }
     }
 
-    public async Task HandleProductDeletedAsync(ProductDeletedEvent productDeletedEvent, CancellationToken cancellationToken = default)
+    public async Task HandleProductDeletedAsync(ProductDeletedEvent productDeletedEvent, Guid? messageId = null, CancellationToken cancellationToken = default)
     {
         try
         {
