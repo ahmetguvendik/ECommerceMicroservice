@@ -14,13 +14,13 @@ namespace StockService.Infrastructure.Services;
 public class ProductEventService : IProductEventService
 {
     private readonly IGenericRepository<Stock> _stockRepository;
-    private readonly IGenericRepository<StockInbox> _inboxRepository;
+    private readonly IStockInboxRepository _inboxRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly ISendEndpointProvider _sendEndpointProvider;
     
     public ProductEventService(
         IGenericRepository<Stock> stockRepository,
-        IGenericRepository<StockInbox> inboxRepository,
+        IStockInboxRepository inboxRepository,
         IUnitOfWork unitOfWork,
         ISendEndpointProvider sendEndpointProvider)
     {
@@ -33,11 +33,10 @@ public class ProductEventService : IProductEventService
 
     public async Task HandleProductCreatedAsync(ProductCreatedEvent productCreatedEvent, Guid? messageId = null, CancellationToken cancellationToken = default)
     {
-
         try
         {
-            var inboxId = messageId ?? Guid.NewGuid();
-            var existingInbox = await _inboxRepository.GetByIdAsync(inboxId, cancellationToken);
+            var idempotentToken = messageId ?? throw new InvalidOperationException("IdempotentToken (messageId) is required");            // messageId masaüstünde outbox’tan gelen IdempotentToken’dır; duplicate kontrol bu token ile yapılır.
+            var existingInbox = await _inboxRepository.GetByIdAsync(idempotentToken, cancellationToken);
             if (existingInbox != null && existingInbox.Processed)
             {
                 return; // idempotent
@@ -56,7 +55,7 @@ public class ProductEventService : IProductEventService
                 {
                     var inbox = new StockInbox
                     {
-                        Id = inboxId,
+                        IdempotentToken = idempotentToken,
                         Processed = true,
                         Payload = JsonSerializer.Serialize(productCreatedEvent)
                     };
@@ -65,6 +64,7 @@ public class ProductEventService : IProductEventService
                 else
                 {
                     existingInbox.Processed = true;
+                    existingInbox.Payload = JsonSerializer.Serialize(productCreatedEvent);
                     await _inboxRepository.UpdateAsync(existingInbox, cancellationToken);
                 }
                 
@@ -86,7 +86,7 @@ public class ProductEventService : IProductEventService
             {
                 var inbox = new StockInbox
                 {
-                    Id = inboxId,
+                    IdempotentToken = idempotentToken,
                     Processed = true,
                     Payload = JsonSerializer.Serialize(productCreatedEvent)
                 };
@@ -95,6 +95,7 @@ public class ProductEventService : IProductEventService
             else
             {
                 existingInbox.Processed = true;
+                existingInbox.Payload = JsonSerializer.Serialize(productCreatedEvent);
                 await _inboxRepository.UpdateAsync(existingInbox, cancellationToken);
             }
             
@@ -120,6 +121,13 @@ public class ProductEventService : IProductEventService
     {
         try
         {
+            var idempotentToken = messageId ?? throw new InvalidOperationException("IdempotentToken (messageId) is required");
+            var existingInbox = await _inboxRepository.GetByIdAsync(idempotentToken, cancellationToken);
+            if (existingInbox != null && existingInbox.Processed)
+            {
+                return; // idempotent: daha önce işlendi
+            }
+
             // Ürün güncellendiğinde, stok kaydını bul ve stok sayısını güncelle
             // Stock entity'sinde Id (kendi ID'si) ve ProductId (ürün ID'si) var
             // ProductId ile arama yapmalıyız
@@ -144,6 +152,23 @@ public class ProductEventService : IProductEventService
                 // StockCount belirtilmemişse, stok sayısını değiştirme (sadece ürün bilgileri güncellendi)
             }
 
+            if (existingInbox == null)
+            {
+                var inbox = new StockInbox
+                {
+                    IdempotentToken = idempotentToken,
+                    Processed = true,
+                    Payload = JsonSerializer.Serialize(productUpdatedEvent)
+                };
+                await _inboxRepository.CreateAsync(inbox, cancellationToken);
+            }
+            else
+            {
+                existingInbox.Processed = true;
+                existingInbox.Payload = JsonSerializer.Serialize(productUpdatedEvent);
+                await _inboxRepository.UpdateAsync(existingInbox, cancellationToken);
+            }
+
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             await _unitOfWork.CommitTransactionAsync(cancellationToken);
         }
@@ -159,6 +184,13 @@ public class ProductEventService : IProductEventService
     {
         try
         {
+            var idempotentToken = messageId ?? throw new InvalidOperationException("IdempotentToken (messageId) is required");
+            var existingInbox = await _inboxRepository.GetByIdAsync(idempotentToken, cancellationToken);
+            if (existingInbox != null && existingInbox.Processed)
+            {
+                return; // idempotent: daha önce işlendi
+            }
+
             var stocks =
                 await _stockRepository.GetAllAsync(x => x.ProductId == productDeletedEvent.Id, cancellationToken);
             var stock = stocks.FirstOrDefault();
@@ -172,6 +204,24 @@ public class ProductEventService : IProductEventService
                 await _stockRepository.DeleteAsync(stock, cancellationToken);
 
             }
+
+            if (existingInbox == null)
+            {
+                var inbox = new StockInbox
+                {
+                    IdempotentToken = idempotentToken,
+                    Processed = true,
+                    Payload = JsonSerializer.Serialize(productDeletedEvent)
+                };
+                await _inboxRepository.CreateAsync(inbox, cancellationToken);
+            }
+            else
+            {
+                existingInbox.Processed = true;
+                existingInbox.Payload = JsonSerializer.Serialize(productDeletedEvent);
+                await _inboxRepository.UpdateAsync(existingInbox, cancellationToken);
+            }
+
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             await _unitOfWork.CommitTransactionAsync(cancellationToken);
 

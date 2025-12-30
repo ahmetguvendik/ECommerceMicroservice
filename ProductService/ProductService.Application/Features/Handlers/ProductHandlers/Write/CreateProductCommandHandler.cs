@@ -11,14 +11,14 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
 {
     private readonly IGenericRepository<Product> _productRepository;
     private readonly IGenericRepository<ProductCategory> _productCategoryRepository;
-    private readonly IGenericRepository<ProductOutbox> _productOutboxRepository;
+    private readonly IProductOutboxRepository _productOutboxRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IPublishEndpoint _publishEndpoint;
 
     public CreateProductCommandHandler(
         IGenericRepository<Product> productRepository,
         IGenericRepository<ProductCategory> productCategoryRepository,
-        IGenericRepository<ProductOutbox> productOutboxRepository,
+        IProductOutboxRepository productOutboxRepository,
         IUnitOfWork unitOfWork,
         IPublishEndpoint publishEndpoint)
     {
@@ -53,13 +53,15 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
 
             await _productRepository.CreateAsync(product, cancellationToken);
 
+            var idempotentToken = Guid.NewGuid();
             // EVENT
             var productCreatedEvent = new ProductCreatedEvent
             {
                 ProdcutId = product.Id,
                 InitialStockCount = request.InitialStockCount,
                 Sku = product.Sku,
-                Name = product.Name
+                Name = product.Name,
+                IdempotentToken = idempotentToken,
             };
             
             #region Outbox Olmadan Direkt Event Gonderme
@@ -71,7 +73,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
 
             var productOutbox = new ProductOutbox
             {
-                Id = Guid.NewGuid(),
+                IdempotentToken = idempotentToken,
                 OccuredOn = DateTime.UtcNow,
                 ProcessedDate = null,
                 Type = nameof(ProductCreatedEvent),

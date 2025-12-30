@@ -1,3 +1,4 @@
+using System.Text.Json;
 using MassTransit;
 using MediatR;
 using ProductService.Application.Features.Commands.ProductCommands;
@@ -12,12 +13,18 @@ namespace ProductService.Application.Features.Handlers.ProductHandlers.Write;
 public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand>
 {
     private readonly IGenericRepository<Product>  _productRepository;
+    private readonly IProductOutboxRepository _productOutboxRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly ISendEndpointProvider _sendEndpointProvider;
 
-    public DeleteProductCommandHandler(IGenericRepository<Product> productRepository, IUnitOfWork unitOfWork, ISendEndpointProvider sendEndpointProvider)
+    public DeleteProductCommandHandler(
+        IGenericRepository<Product> productRepository,
+        IProductOutboxRepository productOutboxRepository,
+        IUnitOfWork unitOfWork,
+        ISendEndpointProvider sendEndpointProvider)
     {
          _productRepository = productRepository;
+         _productOutboxRepository = productOutboxRepository;
          _unitOfWork = unitOfWork;
          _sendEndpointProvider = sendEndpointProvider;
     }
@@ -34,17 +41,27 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand>
             }
         
             await _productRepository.DeleteAsync(product,cancellationToken);
+            
+            // Event → Outbox
+            var productDeletedEvent = new ProductDeletedEvent
+            {
+                Id = product.Id,
+                IdempotentToken = Guid.NewGuid()
+            };
+
+            var productOutbox = new ProductOutbox
+            {
+                IdempotentToken = productDeletedEvent.IdempotentToken,
+                OccuredOn = DateTime.UtcNow,
+                ProcessedDate = null,
+                Type = nameof(ProductDeletedEvent),
+                Payload = JsonSerializer.Serialize(productDeletedEvent)
+            };
+
+            await _productOutboxRepository.CreateAsync(productOutbox, cancellationToken);
+
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             await _unitOfWork.CommitTransactionAsync(cancellationToken);
-            
-            //Event yollanacak stock tarafina 
-            var productDeletedEvent = new ProductDeletedEvent();
-            productDeletedEvent.Id = product.Id;
-
-            var sendEnpoint =
-               await _sendEndpointProvider.GetSendEndpoint(
-                    new Uri($"queue:{RabbitMqSettings.Stock_ProductDeletedEventQueue}"));
-            await sendEnpoint.Send(productDeletedEvent, cancellationToken);
 
         }
         catch (Exception e)

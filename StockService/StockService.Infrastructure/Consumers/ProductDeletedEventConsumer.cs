@@ -15,7 +15,7 @@ public class ProductDeletedEventConsumer : IConsumer<ProductDeletedEvent>
     public Task Consume(ConsumeContext<ProductDeletedEvent> context)
     {
         var  @event = context.Message;
-        var messageId = context.MessageId ?? Guid.NewGuid();
-        return _productEventService.HandleProductDeletedAsync(@event, messageId, context.CancellationToken);
+        var token = @event.IdempotentToken;
+        return _productEventService.HandleProductDeletedAsync(@event, token, context.CancellationToken);
     }
 }

@@ -23,7 +23,8 @@ public static class ServiceRegistration
             opt.UseNpgsql(connectionString));
         
         //Repositories
-        collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));        
+        collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        collection.AddScoped<IStockInboxRepository, StockInboxRepository>();
         collection.AddScoped<IUnitOfWork, UnitOfWork>();
         
         //Application Services

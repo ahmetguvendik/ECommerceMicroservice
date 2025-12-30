@@ -50,18 +50,9 @@ namespace StockService.Infrastructure.Migrations
 
             modelBuilder.Entity("StockService.Domain.Entities.StockInbox", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("IdempotentToken")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("ModifiedTime")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Payload")
                         .IsRequired()
@@ -70,7 +61,7 @@ namespace StockService.Infrastructure.Migrations
                     b.Property<bool>("Processed")
                         .HasColumnType("boolean");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdempotentToken");
 
                     b.ToTable("StockInboxes");
                 });

@@ -12,6 +12,19 @@ namespace StockService.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "StockInboxes",
+                columns: table => new
+                {
+                    IdempotentToken = table.Column<Guid>(type: "uuid", nullable: false),
+                    Processed = table.Column<bool>(type: "boolean", nullable: false),
+                    Payload = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StockInboxes", x => x.IdempotentToken);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Stocks",
                 columns: table => new
                 {
@@ -31,6 +44,9 @@ namespace StockService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "StockInboxes");
+
             migrationBuilder.DropTable(
                 name: "Stocks");
         }

@@ -12,4 +12,12 @@ public class StockServiceDbContext : DbContext
     
     public DbSet<Stock> Stocks { get; set; }
     public DbSet<StockInbox> StockInboxes { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<StockInbox>()
+            .HasKey(x => x.IdempotentToken);
+
+        base.OnModelCreating(modelBuilder);
+    }
 }

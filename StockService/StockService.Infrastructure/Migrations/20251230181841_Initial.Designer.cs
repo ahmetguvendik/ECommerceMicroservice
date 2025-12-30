@@ -12,7 +12,7 @@ using StockService.Infrastructure.Contexts;
 namespace StockService.Infrastructure.Migrations
 {
     [DbContext(typeof(StockServiceDbContext))]
-    [Migration("20251210125825_Initial")]
+    [Migration("20251230181841_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -49,6 +49,24 @@ namespace StockService.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stocks");
+                });
+
+            modelBuilder.Entity("StockService.Domain.Entities.StockInbox", b =>
+                {
+                    b.Property<Guid>("IdempotentToken")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Payload")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("Processed")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("IdempotentToken");
+
+                    b.ToTable("StockInboxes");
                 });
 #pragma warning restore 612, 618
         }

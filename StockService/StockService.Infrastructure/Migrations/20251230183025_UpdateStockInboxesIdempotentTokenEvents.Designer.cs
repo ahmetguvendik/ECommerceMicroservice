@@ -12,8 +12,8 @@ using StockService.Infrastructure.Contexts;
 namespace StockService.Infrastructure.Migrations
 {
     [DbContext(typeof(StockServiceDbContext))]
-    [Migration("20251230164247_mig_30122025")]
-    partial class mig_30122025
+    [Migration("20251230183025_UpdateStockInboxesIdempotentTokenEvents")]
+    partial class UpdateStockInboxesIdempotentTokenEvents
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,18 +53,9 @@ namespace StockService.Infrastructure.Migrations
 
             modelBuilder.Entity("StockService.Domain.Entities.StockInbox", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("IdempotentToken")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("ModifiedTime")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Payload")
                         .IsRequired()
@@ -73,7 +64,7 @@ namespace StockService.Infrastructure.Migrations
                     b.Property<bool>("Processed")
                         .HasColumnType("boolean");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdempotentToken");
 
                     b.ToTable("StockInboxes");
                 });

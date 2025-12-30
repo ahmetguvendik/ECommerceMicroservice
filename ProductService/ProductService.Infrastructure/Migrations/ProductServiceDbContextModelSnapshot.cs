@@ -97,18 +97,9 @@ namespace ProductService.Infrastructure.Migrations
 
             modelBuilder.Entity("ProductService.Domain.Entities.ProductOutbox", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("IdempotentToken")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("ModifiedTime")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("OccuredOn")
                         .HasColumnType("timestamp with time zone");
@@ -124,7 +115,7 @@ namespace ProductService.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdempotentToken");
 
                     b.ToTable("ProductOutboxes");
                 });

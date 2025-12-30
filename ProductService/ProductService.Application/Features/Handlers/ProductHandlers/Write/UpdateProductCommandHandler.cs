@@ -1,3 +1,4 @@
+using System.Text.Json;
 using MassTransit;
 using MediatR;
 using ProductService.Application.Features.Commands.ProductCommands;
@@ -13,19 +14,19 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
 {
     private readonly IGenericRepository<Product> _productRepository;
     private readonly IGenericRepository<ProductCategory> _productCategoryRepository;
+    private readonly IProductOutboxRepository _productOutboxRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ISendEndpointProvider _sendEndpointProvider;
 
     public UpdateProductCommandHandler(
         IGenericRepository<Product> productRepository,
         IGenericRepository<ProductCategory> productCategoryRepository,
-        IUnitOfWork unitOfWork,
-        ISendEndpointProvider sendEndpointProvider)
+        IProductOutboxRepository productOutboxRepository,
+        IUnitOfWork unitOfWork)
     {
         _productRepository = productRepository;
         _productCategoryRepository = productCategoryRepository;
+        _productOutboxRepository = productOutboxRepository;
         _unitOfWork = unitOfWork;
-        _sendEndpointProvider = sendEndpointProvider;
     }
 
     public async Task Handle(UpdateProductCommand request, CancellationToken cancellationToken)
@@ -54,21 +55,30 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
             product.ProductCategoryId = request.ProductCategoryId;
 
             await _productRepository.UpdateAsync(product, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-            await _unitOfWork.CommitTransactionAsync(cancellationToken);
-
-            // EVENT: ProductUpdatedEvent
-            // Sadece stok sayısı belirtilmişse event'e ekle
+            // EVENT: ProductUpdatedEvent → Outbox
             if (request.InitialStockCount.HasValue)
             {
                 var productUpdatedEvent = new ProductUpdatedEvent
                 {
                     Id = product.Id,
-                    StockCount = request.InitialStockCount.Value
+                    StockCount = request.InitialStockCount.Value,
+                    IdempotentToken = Guid.NewGuid()
                 };
-                var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"queue:{RabbitMqSettings.Stock_ProductUpdatedEventQueue}"));
-                await sendEndpoint.Send(productUpdatedEvent, cancellationToken);
+
+                var productOutbox = new ProductOutbox
+                {
+                    IdempotentToken = productUpdatedEvent.IdempotentToken,
+                    OccuredOn = DateTime.UtcNow,
+                    ProcessedDate = null,
+                    Type = nameof(ProductUpdatedEvent),
+                    Payload = JsonSerializer.Serialize(productUpdatedEvent)
+                };
+
+                await _productOutboxRepository.CreateAsync(productOutbox, cancellationToken);
             }
+
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.CommitTransactionAsync(cancellationToken);
             
         }
         catch

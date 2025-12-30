@@ -20,6 +20,7 @@ public static class ServiceRegistration
         
         //Repositories
         collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        collection.AddScoped<IProductOutboxRepository, ProductOutboxRepository>();
         collection.AddTransient<IUnitOfWork, UnitOfWork>();
         
         //Mass Trabsit (Rabbitmq)
