@@ -1,6 +1,6 @@
-# ECommerce Microservice – Saga Akışı Özeti
+# ECommerce Microservice – Saga + Outbox/Inbox (Idempotent) Özeti
 
-Bu repo, MassTransit + RabbitMQ ile orchestrated saga kullanan 6 servis (Basket, Order, Stock, Product, Payment, Delivery) ve bir state machine servisinden oluşur. Aşağıdaki özet, uçtan uca sipariş akışını ve kullanılan event/queue/consumer’ları anlatır.
+Bu repo, MassTransit + RabbitMQ ile orchestrated saga kullanan 6 servis (Basket, Order, Stock, Product, Payment, Delivery) ve bir state machine servisinden oluşur. Ayrıca Product ↔ Stock arasında Outbox/Inbox ile idempotent mesajlaşma uygulanmıştır.
 
 ## Genel Akış (Checkout → Teslimat)
 1) **BasketService**: Checkout’ta `OrderStartedEvent` publish eder → `order-started-event-queue`.
@@ -42,14 +42,39 @@ Bu repo, MassTransit + RabbitMQ ile orchestrated saga kullanan 6 servis (Basket,
 - **DeliveryService**: (eklenecek) `delivery-started-event-queue` dinleyip `DeliveryCompletedEvent` / `DeliveryFailedEvent` publish eder.
 - **ProductService**: Ürün CRUD eventleri mevcut; sipariş akışının dışında.
 
+## Outbox / Inbox (Idempotent) – Product ↔ Stock
+**Event sözleşmeleri (Shared/Events/Products):**
+- `ProductCreatedEvent { ProdcutId, Sku, Name, InitialStockCount, IdempotentToken }`
+- `ProductUpdatedEvent { Id, StockCount?, IdempotentToken }`
+- `ProductDeletedEvent { Id, IdempotentToken }`
+
+**Outbox (ProductService):**
+- Create/Update/Delete handler’ları event + `IdempotentToken` üretip `ProductOutboxes` tablosuna yazar (`ProcessedDate = NULL`, `Type`, `Payload`).
+- Tablo PK: `IdempotentToken`.
+
+**Publisher (ProductOutboxPublisher.Service):**
+- `ProcessedDate IS NULL` kayıtları okur, `Type`’a göre deserialize edip publish eder (Created/Updated/Deleted).
+- Başarılı publish sonrası aynı `IdempotentToken` için `ProcessedDate = NOW()`.
+
+**Inbox (StockService):**
+- Consumer’lar event içindeki `IdempotentToken`’ı service’e aktarır.
+- `StockInbox` PK: `IdempotentToken`; alanlar: `Processed`, `Payload`.
+- Service önce inbox’ta token var mı ve `Processed` mı bakar; varsa no-op. Yoksa stok işlemi (create/update/delete) + inbox’ı `Processed=true` yazar, hepsi aynı transaction’da commit.
+- Böylece duplicate mesajlar stokta tekrar işlenmez.
+
+**Test önerisi:** Aynı `ProductCreatedEvent` iki kez gönderildiğinde `StockInbox` tek satır kalmalı ve `Stocks` tek kez güncellenmeli.
+
 ## Notlar
 - Tüm uzun süreçler korelasyonlu; CorrelationId basket’ten saga’ya, order/stock/payment/delivery adımlarına taşınıyor.
 - Rollback: Payment veya Delivery başarısız olursa saga `StockRollbackMessage` gönderir; stok kaydı yoksa hata verilir (görünür olması için).
 - Nullability uyarıları event sınıflarında var; istersen `required` veya default init ekleyebilirsin.
+- Outbox/Inbox için IdempotentToken hem event payload’ında hem tablo PK’sında yer alır; MessageId fallback kullanılmaz.
 
 ## İzleme/Çalıştırma
 - Saga: `dotnet run --project SagaStateMachine.Service/SagaStateMachine.Service.csproj`
 - Order: `dotnet run --project OrderService/OrderService.WebApi/OrderService.WebApi.csproj`
 - Stock: `dotnet run --project StockService/StockService.WebApi/StockService.WebApi.csproj`
 - RabbitMQ yönetim panelinden ilgili kuyruklarda mesaj akışını takip edebilirsin.
+- OutboxPublisher: `dotnet run --project ProductOutboxPublisher.Service/ProductOutboxPublisher.Service.csproj`
+- ProductService: `dotnet run --project ProductService/ProductService.WebApi/ProductService.WebApi.csproj`
 
