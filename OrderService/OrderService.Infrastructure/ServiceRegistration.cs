@@ -43,5 +43,11 @@ public static class ServiceRegistration
                 });
             });
         });
+        
+        // MassTransit Mediator
+        collection.AddMediator(cfg =>
+        {
+            cfg.AddConsumer<CreateOrderCommandConsumer>();
+        });
     }
 }

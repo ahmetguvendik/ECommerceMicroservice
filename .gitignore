@@ -1,0 +1,60 @@
+## Ignore appsettings.json files
+**/appsettings.json
+**/appsettings.*.json
+**/bin/
+**/obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.pdb
+*.exe
+.vs/
+.vscode/
+*.swp
+*.swo
+*~
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider
+.idea/
+*.sln.iml
+
+## macOS
+.DS_Store
+
+## NuGet Packages
+*.nupkg
+**/packages/
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+## MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+## .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Rider
+.idea/
+*.sln.iml
+

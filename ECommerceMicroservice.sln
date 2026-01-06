@@ -68,6 +68,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.WebApi", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductOutboxPublisher.Service", "ProductOutboxPublisher.Service\ProductOutboxPublisher.Service.csproj", "{630530F5-C591-4040-8934-B09F5FA8CA7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoring.Service", "Monitoring.Service\Monitoring.Service.csproj", "{DE6FCC89-A80B-4F8E-BDB7-14B336A3B731}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,7 @@ Global
 		{C3B1A6F4-7E12-4A9E-A1D1-1F2E6F921234} = {7BA5C571-0ECE-43DF-AD6C-F38048300067}
 		{E4C2D7AA-5F5C-4D1E-9A11-9A6D4F125678} = {7BA5C571-0ECE-43DF-AD6C-F38048300067}
 		{630530F5-C591-4040-8934-B09F5FA8CA7E} = {95CD7B2F-69AE-40DD-923C-60912F67CDFF}
+		{DE6FCC89-A80B-4F8E-BDB7-14B336A3B731} = {95CD7B2F-69AE-40DD-923C-60912F67CDFF}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BD744252-3639-4D7D-A638-293995A16AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -217,5 +220,9 @@ Global
 		{630530F5-C591-4040-8934-B09F5FA8CA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{630530F5-C591-4040-8934-B09F5FA8CA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{630530F5-C591-4040-8934-B09F5FA8CA7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6FCC89-A80B-4F8E-BDB7-14B336A3B731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6FCC89-A80B-4F8E-BDB7-14B336A3B731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6FCC89-A80B-4F8E-BDB7-14B336A3B731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6FCC89-A80B-4F8E-BDB7-14B336A3B731}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

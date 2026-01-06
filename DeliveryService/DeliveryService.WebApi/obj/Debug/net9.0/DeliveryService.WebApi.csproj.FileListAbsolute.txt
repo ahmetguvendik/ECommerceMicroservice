@@ -146,3 +146,6 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/DeliveryService/DeliveryService.WebApi/obj/Debug/net9.0/DeliveryService.WebApi.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/DeliveryService/DeliveryService.WebApi/obj/Debug/net9.0/DeliveryService.WebApi.genruntimeconfig.cache
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/DeliveryService/DeliveryService.WebApi/obj/Debug/net9.0/ref/DeliveryService.WebApi.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/DeliveryService/DeliveryService.WebApi/bin/Debug/net9.0/HealthChecks.NpgSql.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/DeliveryService/DeliveryService.WebApi/bin/Debug/net9.0/HealthChecks.UI.Client.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/DeliveryService/DeliveryService.WebApi/bin/Debug/net9.0/HealthChecks.UI.Core.dll

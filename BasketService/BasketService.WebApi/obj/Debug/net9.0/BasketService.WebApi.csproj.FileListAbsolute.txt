@@ -154,3 +154,6 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Shared.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/OrderService.Domain.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/Shared.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/HealthChecks.Redis.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/HealthChecks.UI.Client.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.WebApi/bin/Debug/net9.0/HealthChecks.UI.Core.dll
