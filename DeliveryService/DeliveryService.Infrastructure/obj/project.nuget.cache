@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "RsbqwidP1Qg=",
+  "dgSpecHash": "1/WGlNPd1mE=",
   "success": true,
   "projectFilePath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/DeliveryService/DeliveryService.Infrastructure/DeliveryService.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/Users/ahmetguvendik/.nuget/packages/masstransit/9.0.0-develop.28/masstransit.9.0.0-develop.28.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/masstransit.abstractions/9.0.0-develop.28/masstransit.abstractions.9.0.0-develop.28.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/masstransit.rabbitmq/9.0.0-develop.27/masstransit.rabbitmq.9.0.0-develop.27.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.2.0/microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.entityframeworkcore/9.0.1/microsoft.entityframeworkcore.9.0.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.1/microsoft.entityframeworkcore.abstractions.9.0.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.1/microsoft.entityframeworkcore.analyzers.9.0.1.nupkg.sha512",
@@ -25,10 +27,14 @@
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.1/microsoft.extensions.logging.abstractions.9.0.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.options/9.0.1/microsoft.extensions.options.9.0.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.primitives/9.0.1/microsoft.extensions.primitives.9.0.1.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/nlog/5.3.4/nlog.5.3.4.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/nlog.extensions.logging/5.3.13/nlog.extensions.logging.5.3.13.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/nlog.web.aspnetcore/5.3.14/nlog.web.aspnetcore.5.3.14.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/npgsql/9.0.2/npgsql.9.0.2.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/npgsql.entityframeworkcore.postgresql/9.0.2/npgsql.entityframeworkcore.postgresql.9.0.2.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/rabbitmq.client/7.2.0/rabbitmq.client.7.2.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/system.text.encodings.web/4.5.0/system.text.encodings.web.4.5.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.threading.ratelimiting/8.0.0/system.threading.ratelimiting.8.0.0.nupkg.sha512"
   ],
   "logs": []

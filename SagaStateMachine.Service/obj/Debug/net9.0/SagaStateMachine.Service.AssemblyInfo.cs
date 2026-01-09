@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SagaStateMachine.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69bfe4e7d3f0a394bb345987f2f0ad6a64da26c5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8b0f0f7f015e5b51d47468277daf29af74adf5f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SagaStateMachine.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SagaStateMachine.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

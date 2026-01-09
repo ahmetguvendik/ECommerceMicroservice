@@ -110,6 +110,18 @@
             "MassTransit": {
               "target": "Package",
               "version": "[9.0.0-develop.28, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.3.4, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[5.3.14, )"
             }
           },
           "imports": [
@@ -390,6 +402,9 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj"
+              },
               "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Application/StockService.Application.csproj": {
                 "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/StockService/StockService.Application/StockService.Application.csproj"
               },
@@ -436,6 +451,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.11, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.3.4, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[5.3.14, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

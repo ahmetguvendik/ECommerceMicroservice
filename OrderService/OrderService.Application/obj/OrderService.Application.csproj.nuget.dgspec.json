@@ -198,6 +198,18 @@
             "MassTransit": {
               "target": "Package",
               "version": "[9.0.0-develop.28, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.3.4, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[5.3.14, )"
             }
           },
           "imports": [

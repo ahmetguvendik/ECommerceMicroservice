@@ -2,6 +2,7 @@ using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using OrderService.Application.Repositories;
 using OrderService.Application.Services;
 using OrderService.Application.UnitOfWorks;
@@ -11,6 +12,7 @@ using OrderService.Infrastructure.Repositories;
 using OrderService.Infrastructure.Services;
 using OrderService.Infrastructure.UnitOfWorks;
 using Shared;
+using Shared.Filters;
 
 namespace OrderService.Infrastructure;
 
@@ -37,6 +39,10 @@ public static class ServiceRegistration
             cfg.UsingRabbitMq((context, hostConfig) =>
             {
                 hostConfig.Host(configuration.GetConnectionString("RabbitMq"));
+                
+                // Global Correlation ID filter for all consumers
+                hostConfig.UseConsumeFilter(typeof(MassTransitCorrelationFilter<>), context);
+                
                 hostConfig.ReceiveEndpoint(RabbitMqSettings.Order_CreateOrderCommandQueue, endpoint =>
                 {
                     endpoint.ConfigureConsumer<CreateOrderCommandConsumer>(context);

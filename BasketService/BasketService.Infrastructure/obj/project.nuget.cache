@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ie4UaCPUB/E=",
+  "dgSpecHash": "lOJg19CHR4U=",
   "success": true,
   "projectFilePath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/BasketService/BasketService.Infrastructure/BasketService.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,8 @@
     "/Users/ahmetguvendik/.nuget/packages/masstransit.rabbitmq/9.0.0-develop.27/masstransit.rabbitmq.9.0.0-develop.27.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr/13.1.0/mediatr.13.1.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.2.0/microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.configuration/9.0.0/microsoft.extensions.configuration.9.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.0/microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.configuration.binder/9.0.0/microsoft.extensions.configuration.binder.9.0.0.nupkg.sha512",
@@ -33,10 +35,14 @@
     "/Users/ahmetguvendik/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.identitymodel.logging/8.14.0/microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/nlog/5.3.4/nlog.5.3.4.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/nlog.extensions.logging/5.3.13/nlog.extensions.logging.5.3.13.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/nlog.web.aspnetcore/5.3.14/nlog.web.aspnetcore.5.3.14.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/pipelines.sockets.unofficial/2.2.8/pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/rabbitmq.client/7.2.0/rabbitmq.client.7.2.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/stackexchange.redis/2.8.16/stackexchange.redis.2.8.16.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/system.text.encodings.web/4.5.0/system.text.encodings.web.4.5.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.text.json/9.0.0/system.text.json.9.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/system.threading.ratelimiting/8.0.0/system.threading.ratelimiting.8.0.0.nupkg.sha512"
   ],

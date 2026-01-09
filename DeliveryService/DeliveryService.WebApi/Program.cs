@@ -3,8 +3,21 @@ using DeliveryService.Infrastructure;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
+using NLog;
+using NLog.Web;
+using Shared.Extensions;
 
-var builder = WebApplication.CreateBuilder(args);
+// Configure NLog
+var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+logger.Info("DeliveryService starting up...");
+
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+
+    // Configure NLog for Dependency Injection
+    builder.Logging.ClearProviders();
+    builder.Host.UseNLog();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -43,10 +56,13 @@ builder.Services.AddHealthChecks()
         }
     }, tags: new[] { "messaging", "rabbitmq", "ready" });
 
-builder.Services.AddApplicationService(builder.Configuration);
-builder.Services.AddInfrastructureService(builder.Configuration);
+    builder.Services.AddApplicationService(builder.Configuration);
+    builder.Services.AddInfrastructureService(builder.Configuration);
 
-var app = builder.Build();
+    var app = builder.Build();
+
+    // Add Correlation ID middleware (should be early in the pipeline)
+    app.UseCorrelationId();
 
 // Health Check Endpoint - Must be before HTTPS redirect
 app.UseHealthChecks("/health", new HealthCheckOptions
@@ -58,8 +74,19 @@ app.UseHealthChecks("/health", new HealthCheckOptions
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
-app.MapControllers();
+    app.UseHttpsRedirection();
+    app.MapControllers();
 
-app.Run();
+    logger.Info("DeliveryService started successfully");
+    app.Run();
+}
+catch (Exception ex)
+{
+    logger.Error(ex, "DeliveryService stopped because of exception");
+    throw;
+}
+finally
+{
+    LogManager.Shutdown();
+}
 

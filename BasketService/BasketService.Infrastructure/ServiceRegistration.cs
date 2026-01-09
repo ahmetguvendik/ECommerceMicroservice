@@ -1,6 +1,7 @@
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 using BasketService.Application.Repositories;
 using BasketService.Application.Services;
@@ -8,6 +9,7 @@ using BasketService.Application.UnitOfWorks;
 using BasketService.Infrastructure.Repositories;
 using BasketService.Infrastructure.Services;
 using BasketService.Infrastructure.UnitOfWorks;
+using Shared.Filters;
 
 namespace BasketService.Infrastructure;
 
@@ -38,6 +40,9 @@ public static class ServiceRegistration
             cfg.UsingRabbitMq((context, hostConfig) =>
             {
                 hostConfig.Host(configuration.GetConnectionString("RabbitMq"));
+                
+                // Global Correlation ID filter for all consumers
+                hostConfig.UseConsumeFilter(typeof(MassTransitCorrelationFilter<>), context);
             });
         });
     }

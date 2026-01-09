@@ -1,8 +1,21 @@
 using MassTransit;
 using ProductOutboxPublisher.Service.Jobs;
 using Quartz;
+using NLog;
+using NLog.Extensions.Logging;
+using Shared.Extensions;
 
-var builder = Host.CreateApplicationBuilder(args);
+// Configure NLog
+var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+logger.Info("ProductOutboxPublisher.Service starting up...");
+
+try
+{
+    var builder = Host.CreateApplicationBuilder(args);
+
+    // Configure NLog for Dependency Injection
+    builder.Logging.ClearProviders();
+    builder.Logging.AddNLog();
 
 // Connection string: prefer appsettings connection string, fallback env
 var productOutboxConn = builder.Configuration.GetConnectionString("ProductOutboxConnection")
@@ -43,5 +56,17 @@ builder.Services.AddQuartz(options =>
 
 builder.Services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
 
-var host = builder.Build();
-host.Run();
+    var host = builder.Build();
+    
+    logger.Info("ProductOutboxPublisher.Service started successfully");
+    host.Run();
+}
+catch (Exception ex)
+{
+    logger.Error(ex, "ProductOutboxPublisher.Service stopped because of exception");
+    throw;
+}
+finally
+{
+    LogManager.Shutdown();
+}

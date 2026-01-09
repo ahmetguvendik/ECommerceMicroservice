@@ -2,6 +2,7 @@ using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using StockService.Application.Repositories;
 using StockService.Application.Services;
 using StockService.Application.UnitOfWorks;
@@ -11,6 +12,7 @@ using StockService.Infrastructure.Repositories;
 using StockService.Infrastructure.Services;
 using StockService.Infrastructure.UnitOfWorks;
 using Shared;
+using Shared.Filters;
 
 namespace StockService.Infrastructure;
 
@@ -47,6 +49,9 @@ public static class ServiceRegistration
             {
                 //Host eklenir
                 cfg.Host(configuration.GetConnectionString("RabbitMq"));
+                
+                // Global Correlation ID filter for all consumers
+                cfg.UseConsumeFilter(typeof(MassTransitCorrelationFilter<>), context);
                 
                 // Consumer endpoint'lerini yapılandır
                 cfg.ReceiveEndpoint(RabbitMqSettings.Stock_ProductCreatedEventQueue, e =>

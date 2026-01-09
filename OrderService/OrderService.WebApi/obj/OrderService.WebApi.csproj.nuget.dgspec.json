@@ -271,6 +271,9 @@
               },
               "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Infrastructure/OrderService.Infrastructure.csproj": {
                 "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/OrderService/OrderService.Infrastructure/OrderService.Infrastructure.csproj"
+              },
+              "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/Shared/Shared.csproj"
               }
             }
           }
@@ -312,6 +315,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.11, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.3.4, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[5.3.14, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -388,6 +399,18 @@
             "MassTransit": {
               "target": "Package",
               "version": "[9.0.0-develop.28, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.3.4, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[5.3.14, )"
             }
           },
           "imports": [

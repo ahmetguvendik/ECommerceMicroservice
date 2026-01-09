@@ -1,9 +1,22 @@
 using HealthChecks.UI.Client;
+using NLog;
+using NLog.Web;
+using Shared.Extensions;
 
-var builder = WebApplication.CreateBuilder(args);
+// Configure NLog
+var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+logger.Info("Monitoring.Service starting up...");
 
-// Add services to the container.
-builder.Services.AddOpenApi();
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+
+    // Configure NLog for Dependency Injection
+    builder.Logging.ClearProviders();
+    builder.Host.UseNLog();
+
+    // Add services to the container.
+    builder.Services.AddOpenApi();
 
 // Health Checks
 builder.Services.AddHealthChecks();
@@ -29,7 +42,10 @@ builder.Services.AddHealthChecksUI(settings =>
     })
     .AddPostgreSqlStorage(connectionString);
 
-var app = builder.Build();
+    var app = builder.Build();
+
+    // Add Correlation ID middleware (should be early in the pipeline)
+    app.UseCorrelationId();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -51,4 +67,15 @@ app.UseHealthChecksUI(options =>
     options.ApiPath = "/health-ui-api";
 });
 
-app.Run();
+    logger.Info("Monitoring.Service started successfully");
+    app.Run();
+}
+catch (Exception ex)
+{
+    logger.Error(ex, "Monitoring.Service stopped because of exception");
+    throw;
+}
+finally
+{
+    LogManager.Shutdown();
+}

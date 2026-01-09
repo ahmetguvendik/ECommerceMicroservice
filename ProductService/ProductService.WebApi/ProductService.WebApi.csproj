@@ -17,11 +17,14 @@
         </PackageReference>
         <PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+        <PackageReference Include="NLog" Version="5.3.4" />
+        <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.14" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\ProductService.Application\ProductService.Application.csproj" />
       <ProjectReference Include="..\ProductService.Infrastructure\ProductService.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\Shared\Shared.csproj" />
     </ItemGroup>
 
 </Project>

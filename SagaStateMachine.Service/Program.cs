@@ -4,8 +4,21 @@ using Microsoft.EntityFrameworkCore;
 using SagaStateMachine.Service.StateDbContexts;
 using SagaStateMachine.Service.StateInstances;
 using SagaStateMachine.Service.StateMachines;
+using NLog;
+using NLog.Extensions.Logging;
+using Shared.Extensions;
 
-var builder = Host.CreateApplicationBuilder(args);
+// Configure NLog
+var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+logger.Info("SagaStateMachine.Service starting up...");
+
+try
+{
+    var builder = Host.CreateApplicationBuilder(args);
+
+    // Configure NLog for Dependency Injection
+    builder.Logging.ClearProviders();
+    builder.Logging.AddNLog();
 
 var rabbitMqHost = builder.Configuration.GetConnectionString("RabbitMq") ?? builder.Configuration["RabbitMQ"];
 if (string.IsNullOrWhiteSpace(rabbitMqHost))
@@ -30,5 +43,17 @@ builder.Services.AddMassTransit(config =>
     });
 });
 
-var host = builder.Build();
-host.Run();
+    var host = builder.Build();
+    
+    logger.Info("SagaStateMachine.Service started successfully");
+    host.Run();
+}
+catch (Exception ex)
+{
+    logger.Error(ex, "SagaStateMachine.Service stopped because of exception");
+    throw;
+}
+finally
+{
+    LogManager.Shutdown();
+}

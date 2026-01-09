@@ -20,8 +20,6 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.Diagnostics.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.Diagnostics.Abstractions.dll
-/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll
-/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.FileProviders.Abstractions.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.FileProviders.Physical.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.FileSystemGlobbing.dll
@@ -39,7 +37,6 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/RabbitMQ.Client.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/System.Diagnostics.EventLog.dll
-/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/System.Threading.RateLimiting.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/runtimes/win/lib/net9.0/System.Diagnostics.EventLog.Messages.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/runtimes/win/lib/net9.0/System.Diagnostics.EventLog.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/obj/Debug/net9.0/SagaStateMachine.Service.csproj.AssemblyReference.cache
@@ -150,3 +147,7 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Shared.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/Shared.pdb
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/OrderService.Domain.pdb
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/nlog.config
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/NLog.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/NLog.Extensions.Logging.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/SagaStateMachine.Service/bin/Debug/net9.0/NLog.Web.AspNetCore.dll

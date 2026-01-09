@@ -23,6 +23,8 @@ x86/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+logs/
+**/logs/
 
 ## Visual Studio
 .vs/
@@ -57,4 +59,5 @@ artifacts/
 ## Rider
 .idea/
 *.sln.iml
+
 

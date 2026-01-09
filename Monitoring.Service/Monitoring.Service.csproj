@@ -12,6 +12,12 @@
         <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
         <PackageReference Include="AspNetCore.HealthChecks.UI.PostgreSQL.Storage" Version="9.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.9" />
+        <PackageReference Include="NLog" Version="5.3.4" />
+        <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.14" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 
 </Project>

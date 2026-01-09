@@ -166,3 +166,7 @@
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/YamlDotNet.dll
 /Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/HealthChecks.UI.Client.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/nlog.config
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/NLog.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/NLog.Extensions.Logging.dll
+/Users/ahmetguvendik/Desktop/Asp.NetProject/ECommerceMicroservice/ProductService/ProductService.WebApi/bin/Debug/net9.0/NLog.Web.AspNetCore.dll
